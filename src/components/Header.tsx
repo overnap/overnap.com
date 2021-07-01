@@ -41,7 +41,7 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <Title to='/'>data.site.siteMetadata.title</Title>
+      <Title to='/'>{data.site.siteMetadata.title}</Title>
       <div>
         <Page to='/about'>About</Page>
         <Page to='/posts'>Post</Page>
