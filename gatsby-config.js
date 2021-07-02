@@ -5,8 +5,15 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: 'OVERNAP',
+    author: 'Overnap',
+    github: 'Overnap',
+    email: 'overnapworks@gmail.com',
+    description: 'a dev blog of overnap',
+    siteUrl: 'https://localhost:8000',
+  },
   plugins: [
-    `gatsby-plugin-typescript`,
     'gatsby-plugin-emotion'
   ],
 }
