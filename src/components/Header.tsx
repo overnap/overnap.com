@@ -48,7 +48,8 @@ const Header = () => {
       <div>
         <Page to='/about'>About</Page>
         <Page to='/posts'>Post</Page>
-        <Github href={'https://github.com/' + data.site.siteMetadata.github}>Github</Github>
+        <Github href={'https://github.com/' + data.site.siteMetadata.github}
+                target='_blank' rel='noopener noreferrer'>Github</Github>
       </div>
     </StyledHeader>
   )
