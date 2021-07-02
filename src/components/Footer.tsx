@@ -10,6 +10,7 @@ const StyledFooter = styled.header`
 `
 
 const Text = styled.span`
+  color: #808080;
   font-size: 1rem;
   font-weight: 300;
   user-select: none;
