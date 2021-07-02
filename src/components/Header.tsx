@@ -41,13 +41,14 @@ const Header = () => {
       }
     }
   `)
+  // 리네임한거 관련 잘 수정하고 /blog에 리다이렉트 설정
 
   return (
     <StyledHeader>
       <Title to='/'>{data.site.siteMetadata.title}</Title>
       <div>
         <Page to='/about'>About</Page>
-        <Page to='/posts'>Post</Page>
+        <Page to='/blog'>Blog</Page>
         <Github href={'https://github.com/' + data.site.siteMetadata.github}
                 target='_blank' rel='noopener noreferrer'>Github</Github>
       </div>
