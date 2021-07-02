@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
+import { FooterQuery } from "../graphqlTypes"
 
 const StyledFooter = styled.header`
   margin: auto;
@@ -17,7 +18,7 @@ const Text = styled.span`
 `
 
 const Footer = () => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<FooterQuery>(graphql`
     query footer {
       site {
         buildTime(formatString: "YYYY")
