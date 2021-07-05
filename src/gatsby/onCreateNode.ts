@@ -29,6 +29,7 @@ const onCreateNode: GatsbyNode['onCreateNode'] = ({
         createNode({
           name: tag,
           id: v4(),
+          parent: getNodesByType('Site')[0].id, // Add a parent to avoid GC
           internal: {
             type: 'Tag',
             contentDigest: crypto.createHash('md5').update(tag).digest('hex')
@@ -36,8 +37,6 @@ const onCreateNode: GatsbyNode['onCreateNode'] = ({
         })
       }
     })
-
-    // TODO: Add a parent of node to avoid GC
   }
 }
 
