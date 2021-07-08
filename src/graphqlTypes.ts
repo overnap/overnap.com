@@ -1403,6 +1403,7 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
 };
@@ -1445,11 +1446,11 @@ export type QueryAllMarkdownRemarkArgs = {
 
 
 export type QueryTagArgs = {
-  name?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
 };
 
 
@@ -1488,6 +1489,7 @@ export type QuerySitePluginArgs = {
   version?: Maybe<StringQueryOperatorInput>;
   pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>;
   nodeAPIs?: Maybe<StringQueryOperatorInput>;
+  ssrAPIs?: Maybe<StringQueryOperatorInput>;
   pluginFilepath?: Maybe<StringQueryOperatorInput>;
   packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
 };
@@ -2068,6 +2070,7 @@ export type SitePage = Node & {
   children: Array<Node>;
   internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
 };
@@ -2114,8 +2117,66 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
   __typename?: 'SitePageContext';
-  postsPerPage: Scalars['Int'];
-  isLastPage?: Maybe<Scalars['Boolean']>;
+  id?: Maybe<Scalars['String']>;
+  prevPostId?: Maybe<Scalars['String']>;
+  nextPostId?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  posts?: Maybe<Array<Maybe<SitePageContextPosts>>>;
+  basicPath?: Maybe<Scalars['String']>;
+  pageIndex?: Maybe<Scalars['Int']>;
+  pageCount?: Maybe<Scalars['Int']>;
+};
+
+export type SitePageContextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  prevPostId?: Maybe<StringQueryOperatorInput>;
+  nextPostId?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  posts?: Maybe<SitePageContextPostsFilterListInput>;
+  basicPath?: Maybe<StringQueryOperatorInput>;
+  pageIndex?: Maybe<IntQueryOperatorInput>;
+  pageCount?: Maybe<IntQueryOperatorInput>;
+};
+
+export type SitePageContextPosts = {
+  __typename?: 'SitePageContextPosts';
+  excerpt?: Maybe<Scalars['String']>;
+  fields?: Maybe<SitePageContextPostsFields>;
+  frontmatter?: Maybe<SitePageContextPostsFrontmatter>;
+};
+
+export type SitePageContextPostsFields = {
+  __typename?: 'SitePageContextPostsFields';
+  slug?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPostsFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPostsFilterInput = {
+  excerpt?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<SitePageContextPostsFieldsFilterInput>;
+  frontmatter?: Maybe<SitePageContextPostsFrontmatterFilterInput>;
+};
+
+export type SitePageContextPostsFilterListInput = {
+  elemMatch?: Maybe<SitePageContextPostsFilterInput>;
+};
+
+export type SitePageContextPostsFrontmatter = {
+  __typename?: 'SitePageContextPostsFrontmatter';
+  title?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePageContextPostsFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
+  date?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  tags?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -2218,6 +2279,20 @@ export enum SitePageFieldsEnum {
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  context___id = 'context___id',
+  context___prevPostId = 'context___prevPostId',
+  context___nextPostId = 'context___nextPostId',
+  context___title = 'context___title',
+  context___posts = 'context___posts',
+  context___posts___excerpt = 'context___posts___excerpt',
+  context___posts___fields___slug = 'context___posts___fields___slug',
+  context___posts___frontmatter___title = 'context___posts___frontmatter___title',
+  context___posts___frontmatter___date = 'context___posts___frontmatter___date',
+  context___posts___frontmatter___description = 'context___posts___frontmatter___description',
+  context___posts___frontmatter___tags = 'context___posts___frontmatter___tags',
+  context___basicPath = 'context___basicPath',
+  context___pageIndex = 'context___pageIndex',
+  context___pageCount = 'context___pageCount',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -2270,6 +2345,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___isTSX = 'pluginCreator___pluginOptions___isTSX',
   pluginCreator___pluginOptions___jsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
   pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
+  pluginCreator___ssrAPIs = 'pluginCreator___ssrAPIs',
   pluginCreator___pluginFilepath = 'pluginCreator___pluginFilepath',
   pluginCreator___packageJson___name = 'pluginCreator___packageJson___name',
   pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
@@ -2301,6 +2377,7 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
 };
@@ -2331,6 +2408,7 @@ export type SitePlugin = Node & {
   version?: Maybe<Scalars['String']>;
   pluginOptions?: Maybe<SitePluginPluginOptions>;
   nodeAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
+  ssrAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
   pluginFilepath?: Maybe<Scalars['String']>;
   packageJson?: Maybe<SitePluginPackageJson>;
 };
@@ -2483,6 +2561,7 @@ export enum SitePluginFieldsEnum {
   pluginOptions___isTSX = 'pluginOptions___isTSX',
   pluginOptions___jsxPragma = 'pluginOptions___jsxPragma',
   nodeAPIs = 'nodeAPIs',
+  ssrAPIs = 'ssrAPIs',
   pluginFilepath = 'pluginFilepath',
   packageJson___name = 'packageJson___name',
   packageJson___description = 'packageJson___description',
@@ -2512,6 +2591,7 @@ export type SitePluginFilterInput = {
   version?: Maybe<StringQueryOperatorInput>;
   pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>;
   nodeAPIs?: Maybe<StringQueryOperatorInput>;
+  ssrAPIs?: Maybe<StringQueryOperatorInput>;
   pluginFilepath?: Maybe<StringQueryOperatorInput>;
   packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
 };
@@ -2632,12 +2712,12 @@ export type SitePluginSortInput = {
 
 export type SiteSiteMetadata = {
   __typename?: 'SiteSiteMetadata';
-  title: Scalars['String'];
-  description: Scalars['String'];
-  author: Scalars['String'];
-  github: Scalars['String'];
-  email: Scalars['String'];
-  siteUrl: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  author?: Maybe<Scalars['String']>;
+  github?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
@@ -2670,11 +2750,11 @@ export type StringQueryOperatorInput = {
 
 export type Tag = Node & {
   __typename?: 'Tag';
-  name: Scalars['String'];
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  name?: Maybe<Scalars['String']>;
 };
 
 export type TagConnection = {
@@ -2725,7 +2805,6 @@ export type TagEdge = {
 };
 
 export enum TagFieldsEnum {
-  name = 'name',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -2811,15 +2890,16 @@ export enum TagFieldsEnum {
   internal___ignoreType = 'internal___ignoreType',
   internal___mediaType = 'internal___mediaType',
   internal___owner = 'internal___owner',
-  internal___type = 'internal___type'
+  internal___type = 'internal___type',
+  name = 'name'
 }
 
 export type TagFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
 };
 
 export type TagGroupConnection = {
@@ -2866,6 +2946,20 @@ export type HeaderQuery = (
   )> }
 );
 
+export type SeoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SeoQuery = (
+  { __typename?: 'Query' }
+  & { site?: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata?: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'title' | 'description'>
+    )> }
+  )> }
+);
+
 export type PostQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2893,7 +2987,7 @@ export type BlogQuery = (
     { __typename?: 'MarkdownRemarkConnection' }
     & { nodes: Array<(
       { __typename?: 'MarkdownRemark' }
-      & Pick<MarkdownRemark, 'excerpt'>
+      & Pick<MarkdownRemark, 'excerpt' | 'timeToRead'>
       & { fields: (
         { __typename?: 'Fields' }
         & Pick<Fields, 'slug'>
@@ -2903,4 +2997,41 @@ export type BlogQuery = (
       ) }
     )> }
   ) }
+);
+
+export type PostTemplateQueryVariables = Exact<{
+  id: Scalars['String'];
+  prevPostId?: Maybe<Scalars['String']>;
+  nextPostId?: Maybe<Scalars['String']>;
+}>;
+
+
+export type PostTemplateQuery = (
+  { __typename?: 'Query' }
+  & { markdownRemark?: Maybe<(
+    { __typename?: 'MarkdownRemark' }
+    & Pick<MarkdownRemark, 'id' | 'excerpt' | 'html'>
+    & { frontmatter: (
+      { __typename?: 'Frontmatter' }
+      & Pick<Frontmatter, 'title' | 'description' | 'date' | 'tags'>
+    ) }
+  )>, previous?: Maybe<(
+    { __typename?: 'MarkdownRemark' }
+    & { fields: (
+      { __typename?: 'Fields' }
+      & Pick<Fields, 'slug'>
+    ), frontmatter: (
+      { __typename?: 'Frontmatter' }
+      & Pick<Frontmatter, 'title'>
+    ) }
+  )>, next?: Maybe<(
+    { __typename?: 'MarkdownRemark' }
+    & { fields: (
+      { __typename?: 'Fields' }
+      & Pick<Fields, 'slug'>
+    ), frontmatter: (
+      { __typename?: 'Frontmatter' }
+      & Pick<Frontmatter, 'title'>
+    ) }
+  )> }
 );

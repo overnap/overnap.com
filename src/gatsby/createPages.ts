@@ -14,7 +14,7 @@ const createPages: GatsbyNode['createPages'] = async ({
   actions: { createPage },
   reporter
 }) => {
-  const perPage = 6 // TODO: Change to modify in env or config
+  const perPage = 5 // TODO: Change to modify in env or config
   const Post = path.resolve('./src/templates/Post.tsx')
   const Blog = path.resolve('./src/templates/Blog.tsx')
 
@@ -76,6 +76,7 @@ const createPages: GatsbyNode['createPages'] = async ({
       ) {
         nodes {
           excerpt
+          timeToRead
           fields { slug }
           frontmatter {
             title
@@ -106,11 +107,12 @@ const createPages: GatsbyNode['createPages'] = async ({
   if (heads.length > 0) {
     for (let i = 0; i * perPage < heads.length; i += 1) {
       createPage({
-        path: '/blog/' + (i === 0 ? '' : i.toString()),
+        path: `blog/${i + 1}`,
         component: Blog,
         context: {
           title: 'Blog',
           posts: heads.slice(i * perPage, (i + 1) * perPage),
+          basicPath: 'blog',
           pageIndex: i + 1,
           pageCount: Math.ceil(heads.length / perPage)
         }
