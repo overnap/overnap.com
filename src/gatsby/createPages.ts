@@ -18,7 +18,7 @@ const createPages: GatsbyNode['createPages'] = async ({
   const Post = path.resolve('./src/templates/Post.tsx')
   const Blog = path.resolve('./src/templates/Blog.tsx')
 
-  // create Post
+  // create Post pages
 
   const resultForPost: queryResult<PostQuery> = await graphql(`
     query post {
@@ -66,9 +66,9 @@ const createPages: GatsbyNode['createPages'] = async ({
     })
   }
 
-  // create Blog page
+  // create Blog pages
 
-  const resultForPage: queryResult<BlogQuery> = await graphql(`
+  const resultForBlog: queryResult<BlogQuery> = await graphql(`
     query blog {
       allMarkdownRemark(
         filter: { frontmatter: { published: { eq: true } } }
@@ -88,15 +88,15 @@ const createPages: GatsbyNode['createPages'] = async ({
     }
   `)
 
-  if (!assertQueryResult(resultForPage)) {
+  if (!assertQueryResult(resultForBlog)) {
     reporter.panicOnBuild(
       'There was an error in markdown loading for page generation',
-      resultForPage.errors
+      resultForBlog.errors
     )
     return
   }
 
-  const heads = resultForPage.data?.allMarkdownRemark.nodes
+  const heads = resultForBlog.data?.allMarkdownRemark.nodes
 
   if (heads === undefined) {
     reporter.panicOnBuild('Null check error in page generation')
@@ -109,9 +109,10 @@ const createPages: GatsbyNode['createPages'] = async ({
         path: '/blog/' + (i === 0 ? '' : i.toString()),
         component: Blog,
         context: {
+          title: 'Blog',
           posts: heads.slice(i * perPage, (i + 1) * perPage),
-          pageIndex: i,
-          isLastPage: (i + 1) * perPage >= heads.length
+          pageIndex: i + 1,
+          pageCount: Math.ceil(heads.length / perPage)
         }
       })
     }
