@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
 import { FooterQuery } from "../graphqlTypes"
 
-const StyledFooter = styled.header`
+const StyledFooter = styled.footer`
   margin: auto;
   max-width: 960px;
   display: flex;
@@ -31,7 +31,7 @@ const Footer = () => {
 
   return (
     <StyledFooter>
-      <Text>© {data.site.buildTime} by {data.site.siteMetadata.author}</Text>
+      <Text>© {data.site!.buildTime} by {data.site!.siteMetadata!.author}</Text>
       <Text>Powered by Gatsby.js</Text>
     </StyledFooter>
   )
