@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import React, { useLayoutEffect } from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import Tag from "../components/Tag"
 import { TagsQuery } from "../graphqlTypes"
 
 const Title = styled.h1`
@@ -10,6 +11,9 @@ const Title = styled.h1`
   user-select: none;
 `
 
+const Line = styled.div`
+  margin: 11px 0px;
+`
 interface Props {
   data: TagsQuery
 }
@@ -21,11 +25,10 @@ const Tags = ({ data }: Props) => {
       <Layout>
         <Title>Tags</Title>
         {data.allMarkdownRemark.group.map(tag => (
-          <div key={tag.fieldValue}>
-            <Link to={`/tags/${tag.fieldValue}`}>
-              {tag.fieldValue} ({tag.totalCount})
-            </Link>
-          </div>
+          <Line>
+            <Tag tag={tag.fieldValue!} />
+            - {tag.totalCount} posts
+          </Line>
         ))}
       </Layout>
     </>
