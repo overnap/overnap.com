@@ -21,6 +21,13 @@ module.exports = {
         name: 'blog',
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/about`,
+        name: 'about',
+      },
+    },
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     {

@@ -19,6 +19,7 @@ const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = async
 
     type Fields {
       slug: String!
+      sourceInstanceName: String!
     }
   `)
 }

@@ -7,15 +7,25 @@ const onCreateNode: GatsbyNode['onCreateNode'] = ({
   getNode
 }) => {
   if (node.internal.type === 'MarkdownRemark') {
-    const pathName = createFilePath({ node, getNode, basePath: 'blog' })
-
-    // Create slug by folder name
-
+    // Create sourceInstanceName
+    const source = getNode(node.parent!).sourceInstanceName as string
+    
     createNodeField({
       node,
-      name: 'slug',
-      value: pathName
+      name: 'sourceInstanceName',
+      value: source
     })
+
+    if (source === 'blog') {
+      // Create slug by folder name
+      const pathName = createFilePath({ node, getNode, basePath: 'blog' })
+
+      createNodeField({
+        node,
+        name: 'slug',
+        value: pathName
+      })
+    }
   }
 }
 

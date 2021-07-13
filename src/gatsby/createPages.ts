@@ -1,6 +1,6 @@
 import { GatsbyNode } from "gatsby"
 import path from 'path'
-import { BlogQuery, PostQuery } from "../graphqlTypes"
+import { BlogQuery, PostQuery, TagQuery } from "../graphqlTypes"
 
 interface queryResult<T> {
   data?: T
@@ -23,7 +23,10 @@ const createPages: GatsbyNode['createPages'] = async ({
   const resultForPost: queryResult<PostQuery> = await graphql(`
     query post {
       allMarkdownRemark(
-        filter: { frontmatter: { published: { eq: true } } }
+        filter: {
+          fields: { sourceInstanceName: { eq: "blog" } }
+          frontmatter: { published: { eq: true } }
+        }
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
         nodes {
@@ -71,7 +74,10 @@ const createPages: GatsbyNode['createPages'] = async ({
   const resultForBlog: queryResult<BlogQuery> = await graphql(`
     query blog {
       allMarkdownRemark(
-        filter: { frontmatter: { published: { eq: true } } }
+        filter: {
+          fields: { sourceInstanceName: { eq: "blog" } }
+          frontmatter: { published: { eq: true } }
+        }
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
         nodes {
@@ -119,6 +125,70 @@ const createPages: GatsbyNode['createPages'] = async ({
       })
     }
   }
+  
+  const resultForTag: queryResult<TagQuery> = await graphql(`
+    query tag {
+      allMarkdownRemark(
+        filter: {
+          fields: { sourceInstanceName: { eq: "blog" } }
+          frontmatter: { published: { eq: true } }
+        }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
+        group(field: frontmatter___tags) {
+          edges {
+            node {
+              excerpt
+              timeToRead
+              fields { slug }
+              frontmatter {
+                title
+                date(formatString: "MMMM DD, YYYY")
+                description
+                tags
+              }
+            }
+          }
+          fieldValue
+          totalCount
+        }
+      }
+    }
+  `)
+
+  if (!assertQueryResult(resultForTag)) {
+    reporter.panicOnBuild(
+      'There was an error in markdown loading for tag page generation',
+      resultForTag.errors
+    )
+    return
+  }
+
+  const tagGroups = resultForTag.data?.allMarkdownRemark.group
+
+  if (tagGroups === undefined) {
+    reporter.panicOnBuild('Null check error in tag page generation')
+    return
+  }
+
+  if (tagGroups.length > 0) {
+    tagGroups.map(group => {
+      for (let i = 0; i * perPage < group.edges.length; i += 1) {
+        createPage({
+          path: `tag/${group.fieldValue!.replace(' ', '-')}/${i + 1}`,
+          component: Blog,
+          context: {
+            title: group.fieldValue!.charAt(0).toUpperCase() + group.fieldValue!.slice(1),
+            posts: group.edges.slice(i * perPage, (i + 1) * perPage).map(edge => edge.node),
+            basicPath: `tag/${group.fieldValue!.replace(' ', '-')}`,
+            pageIndex: i + 1,
+            pageCount: Math.ceil(group.edges.length / perPage)
+          }
+        })
+      }
+    })
+  }
+
 }
 
 export default createPages
