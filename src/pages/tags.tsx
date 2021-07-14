@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
-import { graphql, Link } from "gatsby"
-import React, { useLayoutEffect } from "react"
+import { graphql } from "gatsby"
+import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Tag from "../components/Tag"
@@ -19,12 +19,20 @@ interface Props {
 }
 
 const Tags = ({ data }: Props) => {
+  const groups = data.allMarkdownRemark.group
+
+  if (!groups) {
+    return <div>Error!</div>
+  }
+
+  groups.sort((a, b) => { return b.totalCount - a.totalCount })
+
   return (
     <>
       <SEO title='Tags' />
       <Layout>
         <Title>Tags</Title>
-        {data.allMarkdownRemark.group.map(tag => (
+        {groups.map(tag => (
           <Line>
             <Tag tag={tag.fieldValue!} />
             - {tag.totalCount} posts
