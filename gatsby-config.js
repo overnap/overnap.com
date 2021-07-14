@@ -14,6 +14,27 @@ module.exports = {
     siteUrl: 'https://localhost:8000',
   },
   plugins: [
-    'gatsby-plugin-emotion'
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: 'blog',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/about`,
+        name: 'about',
+      },
+    },
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [],
+      },
+    },
   ],
 }
