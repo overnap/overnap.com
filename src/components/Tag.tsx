@@ -5,11 +5,12 @@ import useTagColor from "../hooks/useTagColor"
 const TagContainer = styled(Link)<{ color: string }>`
   font-size: 0.85rem;
   font-weight: bold;
-  color: #404040;
+  color: var(--color-black);
   background-color: ${props => props.color || '#404040'};
   border-radius: 0.5rem;
   padding: 1px 8px;
   margin: 1px 5px 1px 0px;
+  opacity: 0.8;
 `
 
 interface Props {
@@ -18,7 +19,7 @@ interface Props {
 
 const Tag = ({ tag }: Props) => {
   return (
-    <TagContainer to={`/tag/${tag}`} color={useTagColor(tag)}>
+    <TagContainer to={`/tag/${tag.replace(' ', '-')}/1`} color={useTagColor(tag)}>
       {tag}
     </TagContainer>
   )

@@ -3,8 +3,8 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import { HeaderQuery } from "../graphqlTypes"
 
 const StyledHeader = styled.header`
-  margin: auto;
-  max-width: 960px;
+  margin: 12px auto 12px;
+  max-width: 920px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,6 +13,7 @@ const StyledHeader = styled.header`
 const Title = styled(Link)`
   font-size: 1.5rem;
   font-weight: 600;
+  color: var(--color-black);
   user-select: none;
   display: inherit;
 `
@@ -20,6 +21,7 @@ const Title = styled(Link)`
 const Page = styled(Link)`
   font-size: 1.25rem;
   font-weight: 300;
+  color: var(--color-black);
   user-select: none;
   margin-right: 1.25em;
 `
@@ -27,6 +29,7 @@ const Page = styled(Link)`
 const Github = styled.a`
   font-size: 1.25rem;
   font-weight: 300;
+  color: var(--color-black);
   user-select: none;
 `
 

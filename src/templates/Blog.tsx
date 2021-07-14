@@ -14,11 +14,13 @@ const HeaderContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 4rem;
+  color: var(--color-black);
   user-select: none;
 `
 
 const TagLink = styled(Link)`
   font-size: 1.5rem;
+  color: var(--color-weak);
   user-select: none;
 `
 
@@ -47,7 +49,7 @@ const BlogTemplate = ({ pageContext }: Props) => {
           <Title>{title}</Title>
           <TagLink to='/tags'>View all tags</TagLink>
         </HeaderContainer>
-        {posts.map(post => (<Preview post={post}/>))}
+        {posts.map(post => (<Preview key={post.fields.slug} post={post}/>))}
         <nav>
           <ul
             style={{

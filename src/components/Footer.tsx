@@ -4,7 +4,7 @@ import { FooterQuery } from "../graphqlTypes"
 
 const StyledFooter = styled.footer`
   margin: auto;
-  max-width: 960px;
+  max-width: 920px;
   display: flex;
   justify-content: space-between;
   align-items: center;

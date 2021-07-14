@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
-import { graphql, Link } from "gatsby"
-import React, { useLayoutEffect } from "react"
+import { graphql } from "gatsby"
+import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import { AboutQuery } from "../graphqlTypes"

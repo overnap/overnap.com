@@ -33,12 +33,12 @@ const useTagColor = (tag: string) => {
 
   const color = useMemo(() => {
     // String to hue
-    var hue = 0
+    let hue = 0
     for (let i=0; i<tag.length; i+=1) {
-      hue += (hue * crc + tag.charCodeAt(i)) % modulo
+      hue += hue * crc + tag.charCodeAt(i)
     }
 
-    const [r, g, b] = hslToRgb((hue % modulo) / modulo, 0.6, 0.91)
+    const [r, g, b] = hslToRgb((hue % modulo) / modulo, 0.72, 0.86)
     
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
   }, [tag])

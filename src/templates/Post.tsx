@@ -3,6 +3,30 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { PostTemplateQuery } from "../graphqlTypes"
 import SEO from "../components/SEO"
+import styled from '@emotion/styled'
+import Tag from '../components/Tag'
+
+const Title = styled.h1`
+  font-size: 3.25rem;
+  color: var(--color-black);
+  margin: 3.75rem 0 1.25rem;
+`
+
+const Description = styled.span`
+  font-size: 1rem;
+  color: var(--color-black);
+  display: block;
+`
+
+const Time = styled.div`
+  font-size: 1rem;
+  color: var(--color-gray);
+  margin: 0.5rem 0 1.25rem;
+`
+
+const Section = styled.section`
+  margin: 4.25rem 0rem 1rem;
+`
 
 interface Props {
   data: PostTemplateQuery
@@ -25,10 +49,12 @@ const PostTemplate = ({ data }: Props) => {
       <Layout>
         <article itemScope itemType="http://schema.org/Article">
           <header>
-            <h1 itemProp="headline">{post.frontmatter.title}</h1>
-            <p>{post.frontmatter.date}</p>
+            <Title itemProp="headline">{post.frontmatter.title}</Title>
+            <Description>{post.frontmatter.description}</Description>
+            <Time>{post.frontmatter.date} - {post.timeToRead} min</Time>
+            {post.frontmatter.tags.map(tag => (<Tag key={tag} tag={tag} />))}
           </header>
-          <section
+          <Section
             dangerouslySetInnerHTML={{ __html: post.html! }}
             itemProp="articleBody"
           />
@@ -77,6 +103,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      timeToRead
       frontmatter {
         title
         description

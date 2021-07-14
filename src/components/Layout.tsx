@@ -6,7 +6,8 @@ import Header from "./Header"
 
 const Main = styled.div`
   margin: auto;
-  max-width: 960px;
+  max-width: 920px;
+  display: block;
 `
 
 interface Props {
