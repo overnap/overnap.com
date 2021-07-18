@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { PostTemplateQuery } from "../graphqlTypes"
 import SEO from "../components/SEO"
 import styled from '@emotion/styled'
 import Tag from '../components/Tag'
+import TOC from '../components/TOC'
 
 const Title = styled.h1`
   font-size: 3.25rem;
@@ -24,8 +25,19 @@ const Time = styled.div`
   margin: 0.5rem 0 1.25rem;
 `
 
+const TOCAnchor = styled.div`
+  display: none;
+  
+  @media screen and (min-width : 1280px) {
+    display: block;
+    position: fixed;
+    top: 10em;
+    left: calc(50vw - 660px);
+  }
+`
+
 const Section = styled.section`
-  margin: 4.25rem 0rem 1rem;
+  margin: 4.25rem 0rem;
 `
 
 interface Props {
@@ -35,10 +47,40 @@ interface Props {
 const PostTemplate = ({ data }: Props) => {
   const post = data.markdownRemark!
   const { previous, next } = data
+  const [ currentHeader, setCurrentHeader ] = useState('')
 
   if (!post) {
     return <div>ERROR!</div>
   }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const headerElems = document.querySelectorAll<HTMLAnchorElement>('a.anchor')
+      if (headerElems.length === 0) {
+        return
+      }
+
+      window.onscroll = () => {
+        let memoizedHeader = ''
+        const offset = 120
+
+        // To highlight the header in TOC
+        if (headerElems[headerElems.length-1].getBoundingClientRect().bottom < offset) {
+          memoizedHeader = headerElems[headerElems.length-1].href
+        } else {
+          for (const elem of headerElems) {
+            if (offset < elem.getBoundingClientRect().bottom) {
+              break
+            } else {
+              memoizedHeader = elem.href
+            }
+          }
+        }
+
+        setCurrentHeader(memoizedHeader.split('/').pop() || '')
+      }
+    }
+  }, [])
 
   return (
     <>
@@ -47,6 +89,9 @@ const PostTemplate = ({ data }: Props) => {
         description={post.frontmatter.description || post.excerpt || undefined}
       />
       <Layout>
+        <TOCAnchor>
+          <TOC html={data.markdownRemark!.tableOfContents!} currentHeader={currentHeader}/>
+        </TOCAnchor>
         <article itemScope itemType="http://schema.org/Article">
           <header>
             <Title itemProp="headline">{post.frontmatter.title}</Title>
@@ -58,7 +103,6 @@ const PostTemplate = ({ data }: Props) => {
             dangerouslySetInnerHTML={{ __html: post.html! }}
             itemProp="articleBody"
           />
-          <hr />
         </article>
         <nav className="blog-post-nav">
           <ul
@@ -104,6 +148,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       timeToRead
+      tableOfContents
       frontmatter {
         title
         description
