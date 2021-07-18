@@ -5,6 +5,7 @@ import { PostTemplateQuery } from "../graphqlTypes"
 import SEO from "../components/SEO"
 import styled from '@emotion/styled'
 import Tag from '../components/Tag'
+import TOC from '../components/TOC'
 
 const Title = styled.h1`
   font-size: 3.25rem;
@@ -24,8 +25,19 @@ const Time = styled.div`
   margin: 0.5rem 0 1.25rem;
 `
 
+const TOCAnchor = styled.div`
+  display: none;
+  
+  @media screen and (min-width : 1280px) {
+    display: block;
+    position: fixed;
+    top: 10em;
+    left: calc(50vw - 660px);
+  }
+`
+
 const Section = styled.section`
-  margin: 4.25rem 0rem 1rem;
+  margin: 4.25rem 0rem;
 `
 
 interface Props {
@@ -47,6 +59,9 @@ const PostTemplate = ({ data }: Props) => {
         description={post.frontmatter.description || post.excerpt || undefined}
       />
       <Layout>
+        <TOCAnchor>
+          <TOC html={data.markdownRemark!.tableOfContents!} currentHeader={'test'}/>
+        </TOCAnchor>
         <article itemScope itemType="http://schema.org/Article">
           <header>
             <Title itemProp="headline">{post.frontmatter.title}</Title>
@@ -58,7 +73,6 @@ const PostTemplate = ({ data }: Props) => {
             dangerouslySetInnerHTML={{ __html: post.html! }}
             itemProp="articleBody"
           />
-          <hr />
         </article>
         <nav className="blog-post-nav">
           <ul
@@ -104,6 +118,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       timeToRead
+      tableOfContents
       frontmatter {
         title
         description
