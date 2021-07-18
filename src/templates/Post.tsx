@@ -6,6 +6,7 @@ import SEO from "../components/SEO"
 import styled from '@emotion/styled'
 import Tag from '../components/Tag'
 import TOC from '../components/TOC'
+import Utterances from '../components/Utterances'
 
 const Title = styled.h1`
   font-size: 3.25rem;
@@ -37,7 +38,14 @@ const TOCAnchor = styled.div`
 `
 
 const Section = styled.section`
-  margin: 4.25rem 0rem;
+  margin: 5rem 0rem;
+`
+
+const PostNav = styled.nav`
+  margin: 1.5rem 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 
 interface Props {
@@ -104,32 +112,23 @@ const PostTemplate = ({ data }: Props) => {
             itemProp="articleBody"
           />
         </article>
-        <nav className="blog-post-nav">
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
+        <PostNav>
+          {previous ? (
+            <Link to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
+            </Link>
+          ) : (
+            <div />
+          )}
+          {next ? (
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title} →
+            </Link>
+          ) : (
+            <div />
+          )}
+        </PostNav>
+        <Utterances theme={'github-light'} />
       </Layout>
     </>
   )

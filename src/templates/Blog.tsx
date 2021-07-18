@@ -24,6 +24,14 @@ const TagLink = styled(Link)`
   user-select: none;
 `
 
+// TODO: Optimize for pagenation
+const BlogNav = styled.nav`
+  margin: 1.5rem 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 interface Props {
   pageContext: {
     title: string,
@@ -50,32 +58,22 @@ const BlogTemplate = ({ pageContext }: Props) => {
           <TagLink to='/tags'>View all tags</TagLink>
         </HeaderContainer>
         {posts.map(post => (<Preview key={post.fields.slug} post={post}/>))}
-        <nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {pageIndex > 1 && (
-                <Link to={`/${basicPath}/${pageIndex - 1}`} rel="prev">
-                  ← Previous page
-                </Link>
-              )}
-            </li>
-            <li>
-              {pageIndex < pageCount && (
-                <Link to={`/${basicPath}/${pageIndex + 1}`} rel="next">
-                  Next page →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
+        <BlogNav>
+          {pageIndex > 1 ? (
+            <Link to={`/${basicPath}/${pageIndex - 1}`} rel="prev">
+              ← Previous page
+            </Link>
+          ) : (
+            <div />
+          )}
+          {pageIndex < pageCount ? (
+            <Link to={`/${basicPath}/${pageIndex + 1}`} rel="next">
+              Next page →
+            </Link>
+          ) : (
+            <div />
+          )}
+        </BlogNav>
       </Layout>
     </>
   )

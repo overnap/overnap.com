@@ -3,7 +3,7 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import { HeaderQuery } from "../graphqlTypes"
 
 const StyledHeader = styled.header`
-  margin: 0.9rem auto 0.9rem;
+  margin: 0.9em auto 0.9em;
   max-width: 800px;
   display: flex;
   justify-content: space-between;
