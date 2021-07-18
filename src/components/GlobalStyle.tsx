@@ -1,11 +1,11 @@
 import { css, Global } from "@emotion/react";
 
 const reset = css`
-  @font-face {
-    font-family: 'Apple SD Gothic Neo', 'Noto Sans', 'Malgun Gothic', arial, sans-serif;
-  }
-
   html {
+    font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans', 'Malgun Gothic', arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+
     --color-black: #000000;
     --color-weak: #676767;
     --color-gray: #505050;

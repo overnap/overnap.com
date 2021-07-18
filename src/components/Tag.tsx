@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import useTagColor from "../hooks/useTagColor"
 
 const TagContainer = styled(Link)<{ color: string }>`
+  display: inline-block;
   font-size: 0.85rem;
   font-weight: bold;
   color: var(--color-black);

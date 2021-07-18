@@ -3,8 +3,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import { FooterQuery } from "../graphqlTypes"
 
 const StyledFooter = styled.footer`
-  margin: auto;
-  max-width: 920px;
+  margin: 1.75rem auto auto;
+  max-width: 800px;
   display: flex;
   justify-content: space-between;
   align-items: center;

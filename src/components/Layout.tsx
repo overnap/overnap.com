@@ -6,7 +6,7 @@ import Header from "./Header"
 
 const Main = styled.div`
   margin: auto;
-  max-width: 920px;
+  max-width: 800px;
   display: block;
 `
 

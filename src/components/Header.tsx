@@ -3,8 +3,8 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import { HeaderQuery } from "../graphqlTypes"
 
 const StyledHeader = styled.header`
-  margin: 12px auto 12px;
-  max-width: 920px;
+  margin: 0.9rem auto 0.9rem;
+  max-width: 800px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,11 +48,11 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <Title to='/'>{data.site.siteMetadata.title}</Title>
+      <Title to='/'>{data.site!.siteMetadata!.title}</Title>
       <div>
         <Page to='/about'>About</Page>
-        <Page to='/blog'>Blog</Page>
-        <Github href={'https://github.com/' + data.site.siteMetadata.github}
+        <Page to='/blog/1'>Blog</Page>
+        <Github href={'https://github.com/' + data.site!.siteMetadata!.github}
                 target='_blank' rel='noopener noreferrer'>Github</Github>
       </div>
     </StyledHeader>
