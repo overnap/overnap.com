@@ -36,5 +36,14 @@ module.exports = {
         plugins: [],
       },
     },
+    {
+      resolve: 'gatsby-remark-autolink-headers',
+      options: {
+        className: 'anchor',
+        maintainCase: false,
+        removeAccents: true,
+        elements: ['h1', 'h2', 'h3', 'h4']
+      }
+    },
   ],
 }
