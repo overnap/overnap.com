@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { PostTemplateQuery } from "../graphqlTypes"
@@ -47,10 +47,40 @@ interface Props {
 const PostTemplate = ({ data }: Props) => {
   const post = data.markdownRemark!
   const { previous, next } = data
+  const [ currentHeader, setCurrentHeader ] = useState('')
 
   if (!post) {
     return <div>ERROR!</div>
   }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const headerElems = document.querySelectorAll<HTMLAnchorElement>('a.anchor')
+      if (headerElems.length === 0) {
+        return
+      }
+
+      window.onscroll = () => {
+        let memoizedHeader = ''
+        const offset = 120
+
+        // To highlight the header in TOC
+        if (headerElems[headerElems.length-1].getBoundingClientRect().bottom < offset) {
+          memoizedHeader = headerElems[headerElems.length-1].href
+        } else {
+          for (const elem of headerElems) {
+            if (offset < elem.getBoundingClientRect().bottom) {
+              break
+            } else {
+              memoizedHeader = elem.href
+            }
+          }
+        }
+
+        setCurrentHeader(memoizedHeader.split('/').pop() || '')
+      }
+    }
+  }, [])
 
   return (
     <>
@@ -60,7 +90,7 @@ const PostTemplate = ({ data }: Props) => {
       />
       <Layout>
         <TOCAnchor>
-          <TOC html={data.markdownRemark!.tableOfContents!} currentHeader={'test'}/>
+          <TOC html={data.markdownRemark!.tableOfContents!} currentHeader={currentHeader}/>
         </TOCAnchor>
         <article itemScope itemType="http://schema.org/Article">
           <header>

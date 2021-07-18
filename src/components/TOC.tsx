@@ -26,10 +26,12 @@ const Contents = styled.div<{ currentHeader: string }>`
   a {
     font-size: 0.9rem;
     user-select: none;
+    transition: color 0.15s, font-size 0.15s, font-weight 0.15s;
   }
 
   a[href="${props => props.currentHeader}"] {
     font-size: 1rem;
+    font-weight: 500;
     color: var(--color--black);
   }
 `
