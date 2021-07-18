@@ -49,6 +49,12 @@ const reset = css`
   h6 {
     font-size: 1.1rem;
   }
+
+  // for inline code block
+  code[class="language-text"] {
+    margin: 0 2px;
+    padding: 1px 4px 2px !important;
+  }
 `
 
 const GlobalStyle = () => {
