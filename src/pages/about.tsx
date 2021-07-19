@@ -7,6 +7,7 @@ import { AboutQuery } from "../graphqlTypes"
 
 const Title = styled.h1`
   font-size: 4rem;
+  user-select: none;
 `
 
 interface Props {

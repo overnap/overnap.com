@@ -36,7 +36,7 @@ const reset = css`
 
     --color-white: #fafcfc;
     --color-black: #2c2f33;
-    --color-gray: #484a4d;
+    --color-gray: #53565c;
     --color-weak: #8c989c;
     --color-active: #58626b;
     --color-point: #ff7473;

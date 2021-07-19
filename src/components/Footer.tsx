@@ -13,7 +13,6 @@ const StyledFooter = styled.footer`
 const Text = styled.span`
   color: var(--color-gray);
   font-size: 1rem;
-  font-weight: 300;
   user-select: none;
 `
 

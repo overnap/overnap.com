@@ -8,10 +8,12 @@ import { HomeQuery } from "../graphqlTypes"
 
 const Title = styled.h1`
   font-size: 4rem;
+  user-select: none;
 `
 
 const Divider = styled.h1`
   font-size: 2.5rem;
+  user-select: none;
 `
 
 const HeaderContainer = styled.div`
