@@ -25,8 +25,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/content/about`,
-        name: 'about',
+        path: `${__dirname}/content/essential`,
+        name: 'essential',
       },
     },
     'gatsby-plugin-emotion',

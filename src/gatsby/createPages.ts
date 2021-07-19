@@ -18,7 +18,7 @@ const createPages: GatsbyNode['createPages'] = async ({
   const Post = path.resolve('./src/templates/Post.tsx')
   const Blog = path.resolve('./src/templates/Blog.tsx')
 
-  // create Post pages
+  // Create Post pages
 
   const resultForPost: queryResult<PostQuery> = await graphql(`
     query post {
@@ -69,7 +69,7 @@ const createPages: GatsbyNode['createPages'] = async ({
     })
   }
 
-  // create Blog pages
+  // Create Blog pages
 
   const resultForBlog: queryResult<BlogQuery> = await graphql(`
     query blog {
@@ -81,13 +81,11 @@ const createPages: GatsbyNode['createPages'] = async ({
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
         nodes {
-          excerpt
           timeToRead
           fields { slug }
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
-            description
             tags
           }
         }
@@ -126,6 +124,8 @@ const createPages: GatsbyNode['createPages'] = async ({
     }
   }
   
+  // Create tag pages
+  
   const resultForTag: queryResult<TagQuery> = await graphql(`
     query tag {
       allMarkdownRemark(
@@ -138,13 +138,11 @@ const createPages: GatsbyNode['createPages'] = async ({
         group(field: frontmatter___tags) {
           edges {
             node {
-              excerpt
               timeToRead
               fields { slug }
               frontmatter {
                 title
                 date(formatString: "MMMM DD, YYYY")
-                description
                 tags
               }
             }

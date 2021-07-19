@@ -7,7 +7,6 @@ import { AboutQuery } from "../graphqlTypes"
 
 const Title = styled.h1`
   font-size: 4rem;
-  user-select: none;
 `
 
 interface Props {
@@ -23,7 +22,7 @@ const About = ({ data }: Props) => {
     <>
       <SEO title='About' />
       <Layout>
-        <Title>{data.markdownRemark!.frontmatter.title}</Title>
+        <Title>{data.markdownRemark!.frontmatter!.title!}</Title>
         <section
             dangerouslySetInnerHTML={{ __html: data.markdownRemark!.html! }}
             itemProp="articleBody"
@@ -37,7 +36,12 @@ export default About
 
 export const pageQuery = graphql`
   query about {
-    markdownRemark(fields: { sourceInstanceName: { eq: "about" } }) {
+    markdownRemark(
+      fields: {
+        sourceInstanceName: { eq: "essential" }
+        slug: { eq: "/about/" }
+      }
+    ) {
       html
       frontmatter { title }
     }

@@ -16,16 +16,13 @@ const onCreateNode: GatsbyNode['onCreateNode'] = ({
       value: source
     })
 
-    if (source === 'blog') {
-      // Create slug by folder name
-      const pathName = createFilePath({ node, getNode, basePath: 'blog' })
+    const pathName = createFilePath({ node, getNode })
 
-      createNodeField({
-        node,
-        name: 'slug',
-        value: pathName
-      })
-    }
+    createNodeField({
+      node,
+      name: 'slug',
+      value: pathName
+    })
   }
 }
 

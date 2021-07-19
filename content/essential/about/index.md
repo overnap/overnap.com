@@ -1,6 +1,5 @@
 ---
-title: About Me
-date: 2021-07-05
+title: About
 ---
 
 std::cout << "Hello World" << std::endl; 
