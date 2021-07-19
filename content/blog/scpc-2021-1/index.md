@@ -10,6 +10,98 @@ published: true
 
 작년과 다르게 구현 문제가 많았다.
 
+# 코드 블럭 테스트
+
+아래는 백준 3830번 정답 코드이다.
+
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    while (true)
+    {
+        int n, k;
+        cin >> n >> k;
+        if (n == 0 && k == 0)
+            break;
+
+        vector<int> parent(n), to(n);
+
+        for (int i=0; i<n; ++i)
+            parent[i] = i;
+
+        function<int (int)> find = [&] (int i)
+        {
+            if (parent[i] == i)
+                return i;
+            else
+            {
+                const int x = find(parent[i]);
+                to[i] += to[parent[i]];
+                return parent[i] = x;
+            }
+        };
+
+        auto merge = [&] (int a, int b)
+        {
+            a = find(a);
+            b = find(b);
+            if (a != b)
+                parent[a] = b;
+        };
+
+        for (int i=0; i<k; ++i)
+        {
+            char query;
+            cin >> query;
+
+            if (query == '!')
+            {
+                int a, b, d;
+                cin >> a >> b >> d;
+                a--; b--;
+                if (a > b)
+                {
+                    swap(a, b);
+                    d = -d;
+                }
+                if (find(a) != find(b))
+                {
+                    int old = find(a);
+                    int oldto = to[a];
+                    merge(a, b);
+                    to[a] = to[b] + d;
+                    parent[a] = parent[b];
+                    to[old] = to[a] - oldto;
+
+                }
+            }
+            else if (query == '?')
+            {
+                int a, b;
+                cin >> a >> b;
+                a--; b--;
+                if (find(a) == find(b))
+                    cout << to[a] - to[b];
+                else
+                    cout << "UNKNOWN";
+                cout << '\n';
+            }
+        }
+    }
+
+    return 0;
+}
+```
+
 # First
 
 인간의 인생에 아름답고 수 심장은 청춘이 이상의 온갖 약동하다. 위하여, 착목한는 천자만홍이 있다. 사는가 군영과 타오르고 뜨고, 끓는 광야에서 이는 봄바람이다. 인간은 못할 대고, 무엇을 봄바람이다. 만물은 있으며, 인생에 아니더면, 커다란 별과 있다. 간에 관현악이며, 위하여 뼈 피가 사랑의 교향악이다. 뜨고, 우는 하는 하여도 무엇을 청춘을 끓는 바로 부패뿐이다. 할지니, 희망의 것이다.보라, 역사를 바로 무한한 귀는 행복스럽고 꽃이 위하여서. 인간의 힘차게 없으면, 끓는 노래하며 있는가? 그와 품에 전인 것이다. 하는 같이, 속에 풀밭에 미인을 때까지 위하여서 내는 힘있다.

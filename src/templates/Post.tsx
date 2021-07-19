@@ -37,6 +37,11 @@ const TOCAnchor = styled.div`
 
 const Section = styled.section`
   margin: 5rem 0rem;
+  font-size: 16px;
+
+  img {
+    border-radius: 0.8em;
+  }
 `
 
 const PostNav = styled.nav`
