@@ -40,10 +40,13 @@ const reset = css`
     --color-white: #fafcfc;
     --color-black: #2c2f33;
     --color-gray: #53565c;
-    --color-weak: #8c989c;
+    --color-weak: #768287;
     --color-active: #58626b;
-    --color-point: #ff7473;
     --color-dark: #373f4d;
+
+    @media screen and (max-width: 900px) {
+      font-size: 14px;
+    }
   }
 
   *::selection {
@@ -59,6 +62,11 @@ const reset = css`
 
   a:hover {
     color: var(--color-active);
+  }
+
+  a:active, a:focus {
+    outline: 0;
+    border: none;
   }
 
   h1, h2, h3, h4, h5, h6, div, span {

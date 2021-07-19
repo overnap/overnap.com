@@ -10,6 +10,11 @@ const Title = styled.h1`
   user-select: none;
 `
 
+const Section = styled.section`
+  margin: 2em 0;
+  font-size: 16px;
+`
+
 interface Props {
   data: AboutQuery
 }
@@ -24,7 +29,7 @@ const About = ({ data }: Props) => {
       <SEO title='About' />
       <Layout>
         <Title>{data.markdownRemark!.frontmatter!.title!}</Title>
-        <section
+        <Section
             dangerouslySetInnerHTML={{ __html: data.markdownRemark!.html! }}
             itemProp="articleBody"
           />

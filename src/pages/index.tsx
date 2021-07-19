@@ -23,12 +23,13 @@ const HeaderContainer = styled.div`
 `
 
 const TagLink = styled(Link)`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   user-select: none;
 `
 
 const Section = styled.section`
   margin: 2em 0;
+  font-size: 16px;
 `
 
 interface Props {

@@ -19,7 +19,7 @@ const Title = styled.h1`
 `
 
 const TagLink = styled(Link)`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   user-select: none;
 `
 
