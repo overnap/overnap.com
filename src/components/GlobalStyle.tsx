@@ -4,6 +4,7 @@ const reset = css`
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 400;
+  font-display: swap;
   src: local('Noto Sans CJK KR'),
        url('/fonts/NotoSansKR-Regular.woff2') format('woff2'),
        url('/fonts/NotoSansKR-Regular.woff') format('woff'),
@@ -13,6 +14,7 @@ const reset = css`
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 500;
+  font-display: swap;
   src: local('Noto Sans CJK KR'),
        url('/fonts/NotoSansKR-Medium.woff2') format('woff2'),
        url('/fonts/NotoSansKR-Medium.woff') format('woff'),
@@ -22,6 +24,7 @@ const reset = css`
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-weight: 700;
+  font-display: swap;
   src: local('Noto Sans CJK KR'),
        url('/fonts/NotoSansKR-Bold.woff2') format('woff2'),
        url('/fonts/NotoSansKR-Bold.woff') format('woff'),

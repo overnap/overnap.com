@@ -50,7 +50,23 @@ const SEO = ({ description, lang='ko', meta=[], title }: Props) => {
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
       meta={defaultMeta.concat(meta)}
-    />
+    >
+      <link rel='preload'
+            as='font'
+            href='/fonts/NotoSansKR-Regular.woff2'
+            type='font/woff2'
+            crossOrigin='anonymous' />
+            <link rel='preload'
+            as='font'
+            href='/fonts/NotoSansKR-Bold.woff2'
+            type='font/woff2'
+            crossOrigin='anonymous' />
+            <link rel='preload'
+            as='font'
+            href='/fonts/NotoSansKR-Medium.woff2'
+            type='font/woff2'
+            crossOrigin='anonymous' />
+    </Helmet>
   )
 }
 
