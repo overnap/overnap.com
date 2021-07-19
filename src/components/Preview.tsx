@@ -11,18 +11,13 @@ const Title = styled(Link)`
   font-weight: 600;
   font-size: 1.75rem;
   color: var(--color-black);
+  display: block;
 `
 
 const Time = styled.div`
   font-size: 1rem;
   color: var(--color-gray);
-  margin: 2px 0 15px;
-`
-
-const Description = styled.span`
-  font-size: 1rem;
-  color: var(--color-gray);
-  display: block;
+  margin: 0 0 6px;
 `
 
 type UnArray<T extends any[]> = T extends (infer U)[] ? U : never
@@ -35,8 +30,7 @@ const Preview = ({ post }: Props) => {
   return (
     <Container>
       <Title to={`${post.fields.slug}`}>{post.frontmatter.title}</Title>
-      <Description>{post.frontmatter.description || post.excerpt}</Description>
-      <Time>{`${post.frontmatter.date} - ${post.timeToRead} min`}</Time>
+      <Time>{post.frontmatter.date} — {post.timeToRead} min read</Time>
       {post.frontmatter.tags.map(tag => (<Tag key={tag} tag={tag} />))}
     </Container>
   )

@@ -35,10 +35,12 @@ const useTagColor = (tag: string) => {
     // String to hue
     let hue = 0
     for (let i=0; i<tag.length; i+=1) {
-      hue += hue * crc + tag.charCodeAt(i)
+      hue = (hue + hue * crc + tag.charCodeAt(i)) % modulo
     }
 
-    const [r, g, b] = hslToRgb((hue % modulo) / modulo, 0.72, 0.86)
+    hue = hue / modulo
+    const sat = 0.88 + Math.min(0, 128 * (hue - 0.2) * (hue - 0.3) * (hue - 0.4) * (hue - 0.5) - 0.25)
+    const [r, g, b] = hslToRgb(hue, sat, 0.85)
     
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
   }, [tag])

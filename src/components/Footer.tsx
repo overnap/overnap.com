@@ -11,7 +11,7 @@ const StyledFooter = styled.footer`
 `
 
 const Text = styled.span`
-  color: #808080;
+  color: var(--color-gray);
   font-size: 1rem;
   font-weight: 300;
   user-select: none;
@@ -29,9 +29,13 @@ const Footer = () => {
     }
   `)
 
+  if (!data.site?.siteMetadata?.author) {
+    return (<div>Error!</div>)
+  }
+
   return (
     <StyledFooter>
-      <Text>© {data.site!.buildTime} by {data.site!.siteMetadata!.author}</Text>
+      <Text>© {data.site!.buildTime!} by {data.site!.siteMetadata!.author!}</Text>
       <Text>Powered by Gatsby.js</Text>
     </StyledFooter>
   )

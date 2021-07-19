@@ -8,29 +8,30 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    color: var(--color-black);
+    user-select: none;
+  }
+
+  a:hover {
+    color: var(--color-black);
+  }
 `
 
 const Title = styled(Link)`
   font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-black);
-  user-select: none;
+  font-weight: 700;
   display: inherit;
 `
 
 const Page = styled(Link)`
   font-size: 1.25rem;
-  font-weight: 300;
-  color: var(--color-black);
-  user-select: none;
   margin-right: 1.25em;
 `
 
 const Github = styled.a`
   font-size: 1.25rem;
-  font-weight: 300;
-  color: var(--color-black);
-  user-select: none;
 `
 
 const Header = () => {
@@ -44,7 +45,10 @@ const Header = () => {
       }
     }
   `)
-  // 리네임한거 관련 잘 수정하고 /blog에 리다이렉트 설정
+
+  if (!data.site?.siteMetadata?.title) {
+    return (<div>Error!</div>)
+  }
 
   return (
     <StyledHeader>

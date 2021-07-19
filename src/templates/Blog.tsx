@@ -13,14 +13,13 @@ const HeaderContainer = styled.div`
 `
 
 const Title = styled.h1`
+  max-width: 600px;
   font-size: 4rem;
-  color: var(--color-black);
   user-select: none;
 `
 
 const TagLink = styled(Link)`
   font-size: 1.5rem;
-  color: var(--color-weak);
   user-select: none;
 `
 
@@ -30,6 +29,10 @@ const BlogNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    color: var(--color-black);
+  }
 `
 
 interface Props {

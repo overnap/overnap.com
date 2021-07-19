@@ -2128,7 +2128,6 @@ export type SitePageContextFilterInput = {
 
 export type SitePageContextPosts = {
   __typename?: 'SitePageContextPosts';
-  excerpt?: Maybe<Scalars['String']>;
   timeToRead?: Maybe<Scalars['Int']>;
   fields?: Maybe<SitePageContextPostsFields>;
   frontmatter?: Maybe<SitePageContextPostsFrontmatter>;
@@ -2144,7 +2143,6 @@ export type SitePageContextPostsFieldsFilterInput = {
 };
 
 export type SitePageContextPostsFilterInput = {
-  excerpt?: Maybe<StringQueryOperatorInput>;
   timeToRead?: Maybe<IntQueryOperatorInput>;
   fields?: Maybe<SitePageContextPostsFieldsFilterInput>;
   frontmatter?: Maybe<SitePageContextPostsFrontmatterFilterInput>;
@@ -2158,14 +2156,12 @@ export type SitePageContextPostsFrontmatter = {
   __typename?: 'SitePageContextPostsFrontmatter';
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type SitePageContextPostsFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -2274,12 +2270,10 @@ export enum SitePageFieldsEnum {
   context___nextPostId = 'context___nextPostId',
   context___title = 'context___title',
   context___posts = 'context___posts',
-  context___posts___excerpt = 'context___posts___excerpt',
   context___posts___timeToRead = 'context___posts___timeToRead',
   context___posts___fields___slug = 'context___posts___fields___slug',
   context___posts___frontmatter___title = 'context___posts___frontmatter___title',
   context___posts___frontmatter___date = 'context___posts___frontmatter___date',
-  context___posts___frontmatter___description = 'context___posts___frontmatter___description',
   context___posts___frontmatter___tags = 'context___posts___frontmatter___tags',
   context___basicPath = 'context___basicPath',
   context___pageIndex = 'context___pageIndex',
@@ -2920,13 +2914,13 @@ export type BlogQuery = (
     { __typename?: 'MarkdownRemarkConnection' }
     & { nodes: Array<(
       { __typename?: 'MarkdownRemark' }
-      & Pick<MarkdownRemark, 'excerpt' | 'timeToRead'>
+      & Pick<MarkdownRemark, 'timeToRead'>
       & { fields: (
         { __typename?: 'Fields' }
         & Pick<Fields, 'slug'>
       ), frontmatter: (
         { __typename?: 'Frontmatter' }
-        & Pick<Frontmatter, 'title' | 'date' | 'description' | 'tags'>
+        & Pick<Frontmatter, 'title' | 'date' | 'tags'>
       ) }
     )> }
   ) }
@@ -2946,13 +2940,13 @@ export type TagQuery = (
         { __typename?: 'MarkdownRemarkEdge' }
         & { node: (
           { __typename?: 'MarkdownRemark' }
-          & Pick<MarkdownRemark, 'excerpt' | 'timeToRead'>
+          & Pick<MarkdownRemark, 'timeToRead'>
           & { fields: (
             { __typename?: 'Fields' }
             & Pick<Fields, 'slug'>
           ), frontmatter: (
             { __typename?: 'Frontmatter' }
-            & Pick<Frontmatter, 'title' | 'date' | 'description' | 'tags'>
+            & Pick<Frontmatter, 'title' | 'date' | 'tags'>
           ) }
         ) }
       )> }
@@ -2973,6 +2967,37 @@ export type AboutQuery = (
       & Pick<Frontmatter, 'title'>
     ) }
   )> }
+);
+
+export type HomeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HomeQuery = (
+  { __typename?: 'Query' }
+  & { main?: Maybe<(
+    { __typename?: 'MarkdownRemark' }
+    & Pick<MarkdownRemark, 'html'>
+    & { frontmatter: (
+      { __typename?: 'Frontmatter' }
+      & Pick<Frontmatter, 'title'>
+    ) }
+  )>, project?: Maybe<(
+    { __typename?: 'MarkdownRemark' }
+    & Pick<MarkdownRemark, 'html'>
+  )>, allMarkdownRemark: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { nodes: Array<(
+      { __typename?: 'MarkdownRemark' }
+      & Pick<MarkdownRemark, 'timeToRead'>
+      & { fields: (
+        { __typename?: 'Fields' }
+        & Pick<Fields, 'slug'>
+      ), frontmatter: (
+        { __typename?: 'Frontmatter' }
+        & Pick<Frontmatter, 'title' | 'date' | 'tags'>
+      ) }
+    )> }
+  ) }
 );
 
 export type TagsQueryVariables = Exact<{ [key: string]: never; }>;

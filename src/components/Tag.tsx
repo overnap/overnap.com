@@ -5,13 +5,12 @@ import useTagColor from "../hooks/useTagColor"
 const TagContainer = styled(Link)<{ color: string }>`
   display: inline-block;
   font-size: 0.85rem;
-  font-weight: bold;
+  font-weight: 500;
   color: var(--color-black);
   background-color: ${props => props.color || '#404040'};
-  border-radius: 0.5rem;
-  padding: 1px 8px;
-  margin: 1px 5px 1px 0px;
-  opacity: 0.8;
+  border-radius: 0.6em;
+  padding: 0 7px 1px;
+  margin: 1px 6px 1px 0;
 `
 
 interface Props {

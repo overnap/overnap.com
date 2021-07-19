@@ -10,13 +10,11 @@ import Utterances from '../components/Utterances'
 
 const Title = styled.h1`
   font-size: 3.25rem;
-  color: var(--color-black);
-  margin: 3.75rem 0 1.25rem;
+  margin: 3.75rem 0 0;
 `
 
-const Description = styled.span`
-  font-size: 1rem;
-  color: var(--color-black);
+const Description = styled.h5`
+  margin: 0;
   display: block;
 `
 
@@ -46,6 +44,10 @@ const PostNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    color: var(--color-black);
+  }
 `
 
 interface Props {
@@ -87,7 +89,11 @@ const PostTemplate = ({ data }: Props) => {
 
         setCurrentHeader(memoizedHeader.split('/').pop() || '')
       }
+
+      return () => { window.onscroll = null }
     }
+
+    return () => {}
   }, [])
 
   return (
@@ -103,8 +109,9 @@ const PostTemplate = ({ data }: Props) => {
         <article itemScope itemType="http://schema.org/Article">
           <header>
             <Title itemProp="headline">{post.frontmatter.title}</Title>
-            <Description>{post.frontmatter.description}</Description>
-            <Time>{post.frontmatter.date} - {post.timeToRead} min</Time>
+            { post.frontmatter.description &&
+            <Description>{post.frontmatter.description}</Description> }
+            <Time>{post.frontmatter.date} — {post.timeToRead} min read</Time>
             {post.frontmatter.tags.map(tag => (<Tag key={tag} tag={tag} />))}
           </header>
           <Section
