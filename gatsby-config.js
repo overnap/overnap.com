@@ -32,6 +32,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -39,7 +40,8 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 800
+              maxWidth: 800,
+              wrapperStyle: 'margin: 1rem auto;'
             }
           },
           {
@@ -51,7 +53,12 @@ module.exports = {
               elements: ['h1', 'h2', 'h3', 'h4']
             }
           },
-          'gatsby-remark-prismjs'
+          'gatsby-remark-prismjs',
+          'gatsby-remark-external-links',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-numbered-footnotes',
+          'gatsby-remark-katex',
+          'gatsby-remark-smartypants'
         ],
       },
     },
