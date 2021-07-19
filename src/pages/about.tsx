@@ -6,7 +6,7 @@ import SEO from "../components/SEO"
 import { AboutQuery } from "../graphqlTypes"
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 3.75rem;
   user-select: none;
 `
 

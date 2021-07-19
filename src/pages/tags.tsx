@@ -7,12 +7,14 @@ import Tag from "../components/Tag"
 import { TagsQuery } from "../graphqlTypes"
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 3.75rem;
   user-select: none;
 `
 
 const Line = styled.div`
   margin: 11px 0px;
+  display: flex;
+  align-items: center;
 `
 interface Props {
   data: TagsQuery

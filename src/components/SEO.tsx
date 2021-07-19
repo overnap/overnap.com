@@ -56,16 +56,19 @@ const SEO = ({ description, lang='ko', meta=[], title }: Props) => {
             href='/fonts/NotoSansKR-Regular.woff2'
             type='font/woff2'
             crossOrigin='anonymous' />
-            <link rel='preload'
+      <link rel='preload'
             as='font'
             href='/fonts/NotoSansKR-Bold.woff2'
             type='font/woff2'
             crossOrigin='anonymous' />
-            <link rel='preload'
+      <link rel='preload'
             as='font'
             href='/fonts/NotoSansKR-Medium.woff2'
             type='font/woff2'
             crossOrigin='anonymous' />
+      <link rel='stylesheet'
+            href='/font.css'
+            type='text/css' />
     </Helmet>
   )
 }

@@ -9,7 +9,7 @@ import TOC from '../components/TOC'
 import Utterances from '../components/Utterances'
 
 const Title = styled.h1`
-  font-size: 3.25rem;
+  font-size: 3rem;
   margin: 3.75rem 0 0;
 `
 
@@ -36,7 +36,7 @@ const TOCAnchor = styled.div`
 `
 
 const Section = styled.section`
-  margin: 5rem 0rem;
+  margin: 4.75rem 0rem;
   font-size: 16px;
 
   img {

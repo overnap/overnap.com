@@ -7,7 +7,7 @@ import SEO from "../components/SEO"
 import { HomeQuery } from "../graphqlTypes"
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 3.75rem;
   user-select: none;
 `
 
@@ -51,7 +51,7 @@ const Home = ({ data }: Props) => {
             itemProp="articleBody"
           />
         <HeaderContainer>
-          <Divider>Latest Posts</Divider>
+          <Divider>Blog</Divider>
           <TagLink to='/blog/1'>View more</TagLink>
         </HeaderContainer>
         {data.allMarkdownRemark.nodes.map(post => (<Preview key={post.fields.slug} post={post}/>))}

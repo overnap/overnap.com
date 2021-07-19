@@ -14,8 +14,12 @@ const HeaderContainer = styled.div`
 
 const Title = styled.h1`
   max-width: 600px;
-  font-size: 4rem;
+  font-size: 3.75rem;
   user-select: none;
+
+  @media screen and (max-width: 900px) {
+    max-width: 300px;
+  }
 `
 
 const TagLink = styled(Link)`
