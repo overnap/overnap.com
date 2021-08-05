@@ -4,12 +4,8 @@ import React from "react"
 import Layout from "../components/Layout"
 import Preview from "../components/Preview"
 import SEO from "../components/SEO"
+import Title from "../components/Title"
 import { HomeQuery } from "../graphqlTypes"
-
-const Title = styled.h1`
-  font-size: 3.75rem;
-  user-select: none;
-`
 
 const Divider = styled.h1`
   font-size: 2.5rem;

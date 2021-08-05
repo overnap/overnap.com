@@ -7,13 +7,16 @@ import styled from '@emotion/styled'
 import Tag from '../components/Tag'
 import TOC from '../components/TOC'
 import Utterances from '../components/Utterances'
+import 'katex/dist/katex.min.css'
 
 const Title = styled.h1`
   font-size: 3rem;
   margin: 3.75rem 0 0;
 `
 
-const Description = styled.h5`
+const Description = styled.div`
+  font-size: 1.5rem;
+  font-weight: 500;
   margin: 0;
   display: block;
 `
@@ -36,7 +39,7 @@ const TOCAnchor = styled.div`
 `
 
 const Section = styled.section`
-  margin: 4.75rem 0rem;
+  margin: 4.75rem 0;
   font-size: 16px;
 
   img {

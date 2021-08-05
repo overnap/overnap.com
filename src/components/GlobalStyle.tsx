@@ -19,6 +19,10 @@ const reset = css`
     }
   }
 
+  body {
+    padding: 0 10px;
+  }
+
   *::selection {
     color: var(--color-white);
     background-color: var(--color-dark);

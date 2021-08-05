@@ -4,12 +4,8 @@ import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Tag from "../components/Tag"
+import Title from "../components/Title"
 import { TagsQuery } from "../graphqlTypes"
-
-const Title = styled.h1`
-  font-size: 3.75rem;
-  user-select: none;
-`
 
 const Line = styled.div`
   margin: 11px 0px;

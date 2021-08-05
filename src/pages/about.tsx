@@ -3,12 +3,8 @@ import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import Title from "../components/Title"
 import { AboutQuery } from "../graphqlTypes"
-
-const Title = styled.h1`
-  font-size: 3.75rem;
-  user-select: none;
-`
 
 const Section = styled.section`
   margin: 2em 0;
