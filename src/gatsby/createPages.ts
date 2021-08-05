@@ -58,7 +58,7 @@ const createPages: GatsbyNode['createPages'] = async ({
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
   
       createPage({
-        path: post.fields.slug,
+        path: post.fields.slug.slice(0, -1),
         component: Post,
         context: {
           id: post.id,
@@ -124,7 +124,7 @@ const createPages: GatsbyNode['createPages'] = async ({
     }
   }
   
-  // Create tag pages
+  // Create Tag pages
   
   const resultForTag: queryResult<TagQuery> = await graphql(`
     query tag {
