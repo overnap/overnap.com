@@ -6,6 +6,7 @@ const reset = css`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.7;
+    height: 100%;
 
     --color-white: #fafcfc;
     --color-black: #2c2f33;
@@ -19,8 +20,13 @@ const reset = css`
     }
   }
 
+  body, #___gatsby, #gatsby-focus-wrapper {
+    margin: 0;
+    min-height: calc(100vh - 0.9em);
+  }
+
   body {
-    padding: 0 10px;
+    padding: 0 16px;
   }
 
   *::selection {
