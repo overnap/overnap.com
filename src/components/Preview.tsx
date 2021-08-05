@@ -29,7 +29,7 @@ interface Props {
 const Preview = ({ post }: Props) => {
   return (
     <Container>
-      <Title to={`${post.fields.slug.slice(0, -1)}`}>{post.frontmatter.title}</Title>
+      <Title to={`${post.fields.slug}`}>{post.frontmatter.title}</Title>
       <Time>{post.frontmatter.date} — {post.timeToRead} min read</Time>
       {post.frontmatter.tags.map(tag => (<Tag key={tag} tag={tag} />))}
     </Container>
