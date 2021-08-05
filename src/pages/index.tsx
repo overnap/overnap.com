@@ -51,11 +51,11 @@ const Home = ({ data }: Props) => {
           <TagLink to='/blog/1'>View more</TagLink>
         </HeaderContainer>
         {data.allMarkdownRemark.nodes.map(post => (<Preview key={post.fields.slug} post={post}/>))}
-        <Divider>Projects</Divider>
+        {/* <Divider>Projects</Divider>
         <Section
             dangerouslySetInnerHTML={{ __html: data.project!.html! }}
             itemProp="articleBody"
-          />
+          /> */}
       </Layout>
     </>
   )

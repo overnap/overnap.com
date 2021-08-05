@@ -2,6 +2,7 @@
 title: Hello.
 ---
 
-I'm Overnap.
+CSE를 공부하는 학부생 오버냅입니다.
 
-Studying CSE in undergraduate course.
+개발과 일상 이야기를 올립니다. 글에 오류가 있다면 꼭 지적 부탁드립니다.
+

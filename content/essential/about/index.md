@@ -2,4 +2,7 @@
 title: About
 ---
 
-std::cout << "Hello World" << std::endl; 
+I'm Overnap.
+
+Studying CSE in undergraduate course.
+
