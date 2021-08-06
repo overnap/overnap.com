@@ -1,7 +1,6 @@
 ---
 title: 블로그를 시작하면서
 date: 2021-08-05
-description: 블로그를 시작한 이유와 앞으로의 방향에 대해 간단히 적는다
 tags:
   - log
 published: true
