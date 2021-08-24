@@ -8,7 +8,7 @@ import { AboutQuery } from "../graphqlTypes"
 
 const Section = styled.section`
   margin: 2em 0;
-  font-size: 16px;
+  font-size: 17px;
 `
 
 interface Props {

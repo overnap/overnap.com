@@ -10,7 +10,7 @@ import Utterances from '../components/Utterances'
 import 'katex/dist/katex.min.css'
 
 const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 2.75rem;
   margin: 3.75rem 0 0;
 `
 
@@ -34,13 +34,13 @@ const TOCAnchor = styled.div`
     display: block;
     position: fixed;
     top: 10em;
-    left: calc(50vw - 660px);
+    left: calc(50vw - 650px);
   }
 `
 
 const Section = styled.section`
   margin: 4.75rem 0;
-  font-size: 16px;
+  font-size: 17px;
 
   img {
     border-radius: 0.8em;
@@ -56,6 +56,11 @@ const PostNav = styled.nav`
   a {
     color: var(--color-black);
   }
+`
+
+const Article = styled.article`
+  max-width: 680px;
+  margin: auto;
 `
 
 interface Props {
@@ -114,7 +119,7 @@ const PostTemplate = ({ data }: Props) => {
         <TOCAnchor>
           <TOC html={data.markdownRemark!.tableOfContents!} currentHeader={currentHeader}/>
         </TOCAnchor>
-        <article itemScope itemType="http://schema.org/Article">
+        <Article itemScope itemType="http://schema.org/Article">
           <header>
             <Title itemProp="headline">{post.frontmatter.title}</Title>
             { post.frontmatter.description &&
@@ -126,7 +131,7 @@ const PostTemplate = ({ data }: Props) => {
             dangerouslySetInnerHTML={{ __html: post.html! }}
             itemProp="articleBody"
           />
-        </article>
+        </Article>
         <PostNav>
           {previous ? (
             <Link to={previous.fields.slug} rel="prev">

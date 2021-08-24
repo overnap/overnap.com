@@ -7,7 +7,9 @@ const Container = styled.div`
   line-height: 1.5;
 `
 
-const Title = styled.h4`
+const Title = styled.div`
+  font-weight: 500;
+  font-size: 1.25rem;
   margin: 0 0 8px 10px;
   user-select: none;
 `

@@ -3,7 +3,7 @@ import { css, Global } from "@emotion/react";
 const reset = css`
   html {
     font-family: 'Noto Sans CJK KR';
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 400;
     line-height: 1.7;
     height: 100%;
@@ -11,12 +11,12 @@ const reset = css`
     --color-white: #fafcfc;
     --color-black: #2c2f33;
     --color-gray: #53565c;
-    --color-weak: #6f7c82;
-    --color-active: #56636e;
+    --color-weak: #687d87;
+    --color-active: #4a5b69;
     --color-dark: #373f4d;
 
     @media screen and (max-width: 900px) {
-      font-size: 14px;
+      font-size: 15px;
     }
   }
 
