@@ -45,6 +45,10 @@ const Section = styled.section`
   img {
     border-radius: 0.8em;
   }
+
+  h2, h3 {
+    margin: 3rem 0 1.25rem 0;
+  }
 `
 
 const PostNav = styled.nav`
