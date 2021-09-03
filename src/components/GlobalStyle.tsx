@@ -8,7 +8,7 @@ const reset = css`
     line-height: 1.7;
     height: 100%;
 
-    --color-white: #fafcfc;
+    --color-white: #f0f2f3;
     --color-black: #2c2f33;
     --color-gray: #53565c;
     --color-weak: #687d87;
@@ -89,6 +89,8 @@ const reset = css`
   code[class="language-text"] {
     margin: 0 2px;
     padding: 1px 4px 2px !important;
+    background-color: var(--color-white) !important;
+    color: var(--color-gray) !important;
   }
 `
 
