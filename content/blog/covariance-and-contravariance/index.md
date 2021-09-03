@@ -82,9 +82,9 @@ Action<string> actString = actObject; // ok
 
 재미있는 점이 하나 있다. `T`에 대해 contravariant한 타입에 또 contravariant하다면, `T`에 대해 covariant하다는 사실이다. 즉 `Function<Function<A, void>, void>`는 `A`에 대해 covariant하다.
 
-프로그래밍 언어에서 쓰이는 variance는 범주론(category theory)의 함자(functor)에서 출발한 개념이다. Functor에는 일반적인 (covariant) functor와 contravariant functor가 있는데, 간단히 설명하자면 대응시키는 사상의 방향만 다르다. (Functor에 대해서는 다른 글에서 자세히 다루자.)
+프로그래밍 언어에서 쓰이는 variance는 범주론(category theory)의 함자(functor)에서 출발한 개념이다. Functor에는 일반적인(covariant) functor와 contravariant functor가 있는데, 간단히 설명하자면 대응시키는 사상의 방향만 다르다. (Functor에 대해선 다른 글에서 자세히 다루도록 하자.)
 
-Contravariance에 의해 반전된 사상을 다시 반전하면 원래 방향을 갖는다. 프로그래밍 언어에서도 동일하다. Contravariant한 타입을 짝수 번 중첩하면 Subtype 관계는 정방향이다. 즉 covariant하다.
+Contravariance에 의해 반전된 사상을 다시 반전하면 원래 방향을 갖는다. 프로그래밍 언어에서도 동일하다. Contravariant한 타입을 짝수 번 중첩하면 subtype 관계는 정방향이다. 즉 covariant하다.
 
 중첩은 contravariant만 주의하면 된다. Covariant는 중첩해도 covariant하다.
 
@@ -92,7 +92,7 @@ Contravariance에 의해 반전된 사상을 다시 반전하면 원래 방향�
 
 프로그래밍을 하다 보면 covariant 타입과 contravariant 타입을 중첩하는 일이 꽤 있다. 중첩이 복잡해지면 타입이 covariant인지 contravariant인지 헷갈린다. 이럴 때 함수 입출력의 위치와 contravariant가 중첩된 횟수를 잘 살펴보도록 하자.
 
-여기서 이런 생각을 할 수 있다. Covariant하지 않으면 contravariant한가? 다음 주제에서 알아본다.
+여기서 이런 생각을 할 수 있다. Covariant하지 않으면 contravariant한가? 그렇지 않다. 다음 주제에서 알아본다.
 
 
 
@@ -131,13 +131,13 @@ IList<object> objects = strings; // compile error
 
 
 
-## Bivariance & Typescript's `strict`
+## Bivariance & Typescript
 
 아주 특이한 경우로 bivariant한 타입이 있다. Covariant하면서 contravariant하다니, 잘 상상이 가지 않는다.
 
 어떤 상수 타입 `Const<T>`가 있다. `Const<T>`는 `T`에 무엇이 오든 상수만 갖는다. 다시 말해 `void -> number` 함수다.
 
-`A`가 전혀 쓰이지 않는다. `Const<Cat>` <: `Const<Animal>`인 동시에 `Const<Animal>` <: `Const<Cat>`이다. 그러므로 `A`에 대해 covariant하면서 contravariant하다.
+`T`가 전혀 쓰이지 않는다. `Const<Cat>` <: `Const<Animal>`인 동시에 `Const<Animal>` <: `Const<Cat>`이다. 그러므로 `T`에 대해 covariant하면서 contravariant하다.
 
 이번에는 타입스크립트 예제다. 타입스크립트를 잘 모르더라도 쉽게 이해할만한 코드다.
 
@@ -152,7 +152,7 @@ let y: Const<number[]> = x // ok
 
 그런데 타입스크립트에서 bivariance를 손쉽게 체험해볼 수 있다. 컴파일러 옵션에서 `strict`를 끄면 된다.
 
-충격적이게도 Typescript 2.6 이전에는 함수의 인자가 bivariant였다. 2.6에서 strict flag에 `strictFunctionTypes`가 추가되면서 contravariant하게 바뀌었다. 지금도 `strictFunctionTypes` 혹은 `strict` 전체를 끄면 함수 인자를 bivariant하게 타입 체크한다.
+충격적이게도 Typescript 2.6 이전에는 함수의 인자가 bivariant했다. 2.6에서 strict flag에 `strictFunctionTypes`가 추가되면서 contravariant하게 바뀌었다. 지금도 `strictFunctionTypes` 혹은 `strict` 전체를 끄면 함수 인자를 bivariant하게 취급한다.
 
 [여기서](https://github.com/microsoft/TypeScript/pull/18654) 관련 풀 리퀘스트를 볼 수 있다.
 
@@ -165,7 +165,7 @@ interface Cat extends Animal { nyan: string }
 let f: (x: Animal) => void = (x: Cat) => {} // error with strictFunctionTypes
 ```
 
-타입스크립트에 익숙하지 않은 사람들을 위해: `nyan: string`이 없으면 `strict`가 꺼져 있어도 잘 작동하는데, 그 이유는 타입스크립트의 [구조적 타이핑(structural typing)](https://www.typescriptlang.org/docs/handbook/type-compatibility.html)에 있다.
+타입스크립트에 익숙하지 않은 사람들을 위해: `nyan: string`이 없으면 `strict`가 켜져 있어도 잘 작동하는데, 그 이유는 타입스크립트의 [구조적 타이핑(structural typing)](https://www.typescriptlang.org/docs/handbook/type-compatibility.html)에 있다.
 
 
 
