@@ -5,6 +5,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   line-height: 1.5;
+  max-width: 260px;
 `
 
 const Title = styled.div`
