@@ -85,6 +85,12 @@ const reset = css`
     font-size: 1.1rem;
   }
 
+  blockquote {
+    border-left: 6px solid var(--color-white);
+    margin: 1.5em 0em;
+    padding: 0.5em 1.5em;
+  }
+
   // for inline code block
   code[class="language-text"] {
     margin: 0 2px;
