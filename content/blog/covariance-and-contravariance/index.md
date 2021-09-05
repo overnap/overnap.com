@@ -27,7 +27,9 @@ OOP에서 상속을 이야기할 때 흔히 쓰이는 예제가 있다. `Animal`
 
 이럴 때 `ReadOnlyArray<T>`는 covariant하다고 말한다. 일반화하면 다음과 같다:
 
-> 어떤 generic type `F<T>`에 대해, if `A` <: `B` then `F<A>` <: `F<B>`를 만족하면 `F<T>`는 covariant하다.
+> 어떤 generic type `F<T>`에 대해,
+>
+> `A` <: `B`일 때 `F<A>` <: `F<B>`를 만족하면 `F<T>`는 covariant하다.
 
 C#의 `IEnumerable<T>`가 대표적인 예다. 열거 가능 인터페이스는 `IEnumerable<Derived>` <: `IEnumerable<Base>`를 만족한다. 아래 C# 코드에서 일어나는 암시적 변환을 보자.
 
@@ -53,7 +55,9 @@ IEnumerable<object> objects = strings; // ok
 
 곧 `Calc<Animal>` <: `Calc<Cat>`이다. 이럴 때 contravariant하다고 한다.
 
-> 어떤 generic type `F<T>`에 대해, if `A` <: `B` then `F<B>` <: `F<A>`를 만족하면 `F<T>`는 contravariant하다.
+> 어떤 generic type `F<T>`에 대해,
+>
+> `A` <: `B`일 때 `F<B>` <: `F<A>`를 만족하면 `F<T>`는 contravariant하다.
 
 Subtype이 그대로 따라오는 covariant와 다르게 subtype 관계가 뒤집힌다. 그래서 contravariant(반공변하는, 반변하는)이다.
 
@@ -72,13 +76,15 @@ Action<string> actString = actObject; // ok
 
 그래서 어떤 타입이 covariance고 contravariance인가?
 
-생산자는 covariant하고, 사용자는 contravariant하다는 [유명한 예시](https://stackoverflow.com/a/19739576)가 있다. 위의 예시를 다시 살펴보자. `ReadOnlyArray<T>`에서는 `T`의 정보를 생산한다. `Calc<T>`에서는 `T`의 정보를 사용한다.
+생산자는 covariant하고, 사용자는 contravariant하다는 [유명한 예시](https://stackoverflow.com/a/19739576)가 있다. 상술한 예시를 다시 살펴보자. `ReadOnlyArray<T>`에서는 `T`의 정보를 생산한다. `Calc<T>`에서는 `T`의 정보를 사용한다.
 
 관건은 함수에 있다. 함수의 인자는 사용되고, 반환값은 생산된다.
 
 함수 타입 `Function<A, B>`가 있다. `A`를 인자로 받고 `B`를 반환하는 `A -> B` 함수다. `Function<A, B>`는 `A`에 대해 contravariant하고 `B`에 대해 covariant하다. 따로 예시를 들진 않겠지만 자연스러운 사실이다.
 
-> 어떤 함수, 곧 generic type `A -> B`는 `A`에 대해 contravariant하고 `B`에 대해 covariant하다.
+> 어떤 함수, 곧 generic type `A -> B`는
+>
+> `A`에 대해 contravariant하고 `B`에 대해 covariant하다.
 
 재미있는 점이 하나 있다. `T`에 대해 contravariant한 타입에 또 contravariant하다면, `T`에 대해 covariant하다는 사실이다. 즉 `Function<Function<A, void>, void>`는 `A`에 대해 covariant하다.
 
@@ -86,13 +92,13 @@ Action<string> actString = actObject; // ok
 
 Contravariance에 의해 반전된 사상을 다시 반전하면 원래 방향을 갖는다. 프로그래밍 언어에서도 동일하다. Contravariant한 타입을 짝수 번 중첩하면 subtype 관계는 정방향이다. 즉 covariant하다.
 
-중첩은 contravariant만 주의하면 된다. Covariant는 중첩해도 covariant하다.
+Contravariant만 주의하면 된다. Covariant는 중첩해도 covariant하다. Covariant를 + 부호로, contravariant를 - 부호로 생각하면 쉽다.
 
 언어마다 covariance와 contravariance를 표현하는 방법이 다른데, C#처럼 `out`과 `in`로 표현하는 언어는 함수의 출력과 입력 관점을 강조한다면, Scala처럼 `+`와 `-`로 표현하는 언어는 Contravariance의 사상 반전을 강조하는 것 같다.
 
-프로그래밍을 하다 보면 covariant 타입과 contravariant 타입을 중첩하는 일이 꽤 있다. 중첩이 복잡해지면 타입이 covariant인지 contravariant인지 헷갈린다. 이럴 때 함수 입출력의 위치와 contravariant가 중첩된 횟수를 잘 살펴보도록 하자.
+프로그래밍을 하다 보면 covariant 타입과 contravariant 타입을 중첩하는 일이 꽤 있다. 타입이 복잡해지면 covariant인지 contravariant인지 헷갈린다. 이럴 때 함수 입출력의 위치와 contravariant가 중첩된 횟수를 잘 살펴보도록 하자.
 
-여기서 이런 생각을 할 수 있다. Covariant하지 않으면 contravariant한가? 그렇지 않다. 다음 주제에서 알아본다.
+여기서 이런 생각을 할 수 있다. Covariant하지 않으면 contravariant한가? 그렇진 않다.
 
 
 
@@ -152,7 +158,7 @@ let y: Const<number[]> = x // ok
 
 그런데 타입스크립트에서 bivariance를 손쉽게 체험해볼 수 있다. 컴파일러 옵션에서 `strict`를 끄면 된다.
 
-충격적이게도 Typescript 2.6 이전에는 함수의 인자가 bivariant했다. 2.6에서 strict flag에 `strictFunctionTypes`가 추가되면서 contravariant하게 바뀌었다. 지금도 `strictFunctionTypes` 혹은 `strict` 전체를 끄면 함수 인자를 bivariant하게 취급한다.
+충격적이게도 Typescript 2.6 이전에는 함수의 인자가 bivariant했다. 2.6에서 strict flag에 `strictFunctionTypes`가 추가되면서 contravariant하게 바뀌었다. 지금도 `strictFunctionTypes` 옵션을 끄면 함수 인자를 bivariant하게 취급한다.
 
 [여기서](https://github.com/microsoft/TypeScript/pull/18654) 관련 풀 리퀘스트를 볼 수 있다.
 
@@ -171,13 +177,12 @@ let f: (x: Animal) => void = (x: Cat) => {} // error with strictFunctionTypes
 
 ## 참고 문헌
 
-- https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/concepts/covariance-contravariance/
+- [MS Docs, 공변성(Covariance) 및 반공변성(Contravariance)(C#)](https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/concepts/covariance-contravariance/)
 
-- https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)
+- [Wikipedia, Covariance and contravariance (computer science)](https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science))
 
-- http://tomasp.net/blog/variance-explained.aspx/
+- [Tomas Petricek, The theory behind covariance and contravariance in C# 4](http://tomasp.net/blog/variance-explained.aspx/)
 
-- https://damhiya.github.io/posts/Functor-and-Variance.html
+- [Damhiya, Functor and Variance](https://damhiya.github.io/posts/Functor-and-Variance.html)
 
-- https://seob.dev/posts/%EA%B3%B5%EB%B3%80%EC%84%B1%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80/
 
