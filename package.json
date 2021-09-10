@@ -19,6 +19,7 @@
     "@emotion/styled": "^11.3.0",
     "gatsby": "^3.6.2",
     "gatsby-plugin-emotion": "^6.8.0",
+    "gatsby-plugin-google-gtag": "^3.13.0",
     "gatsby-plugin-netlify": "^3.9.0",
     "gatsby-plugin-react-helmet": "^4.8.0",
     "gatsby-plugin-sharp": "^3.9.0",
