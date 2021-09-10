@@ -22,9 +22,11 @@ const Description = styled.div`
 `
 
 const Time = styled.div`
-  font-size: 1rem;
-  color: var(--color-gray);
   margin: 0.5rem 0 1.25rem;
+  * {
+    font-size: 1rem;
+    color: var(--color-gray);
+  }
 `
 
 const TOCAnchor = styled.div`
@@ -128,7 +130,11 @@ const PostTemplate = ({ data }: Props) => {
             <Title itemProp="headline">{post.frontmatter.title}</Title>
             { post.frontmatter.description &&
             <Description>{post.frontmatter.description}</Description> }
-            <Time>{post.frontmatter.date} — {post.timeToRead} min read</Time>
+            <Time>
+              <time>{post.frontmatter.date}</time>
+              <span> — </span>
+              <span>{post.timeToRead} min read</span>
+            </Time>
             {post.frontmatter.tags.map(tag => (<Tag key={tag} tag={tag} />))}
           </header>
           <Section
