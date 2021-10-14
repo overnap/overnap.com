@@ -48,7 +48,7 @@ const SEO = ({ description, lang='ko', meta=[], title }: Props) => {
     <Helmet
       htmlAttributes={{ lang }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
+      titleTemplate={defaultTitle ? `%s - ${defaultTitle}` : undefined}
       meta={defaultMeta.concat(meta)}
     >
       {/* <link rel='preload'
