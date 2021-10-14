@@ -36,7 +36,7 @@ const TOCAnchor = styled.div`
     display: block;
     position: fixed;
     top: 10em;
-    left: calc(50vw - 650px);
+    left: calc(50vw - 625px);
   }
 `
 
