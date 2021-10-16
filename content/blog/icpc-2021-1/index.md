@@ -61,6 +61,16 @@ ICPC는 3명이 PC 1대로 대회를 진행한다. 우리 팀은 이게 숙련�
 
 
 
+### A. Best Student
+
+[백준 23238번](https://www.acmicpc.net/problem/23238)
+
+Mo's 연습문제인 [백준 13548번](https://www.acmicpc.net/problem/13548)과 매우 유사하다.
+
+하지만 빈도가 아니라 값을 구해야 한다. 좌표 압축과 set을 쓰면 $O(Q+N\sqrt{N}\log{N})$인데 TLE를 받는다. set 대신 sqrt decomposition을 써서 업데이트에 $O(1)$, 검색에 $O(\sqrt{N})$ 걸리도록 하면 통과한다. $O(Q+N\sqrt{N})$으로 구할 수 있다.
+
+
+
 ### B. 당근 밭
 
 [백준 23239번](https://www.acmicpc.net/problem/23239)
@@ -133,3 +143,4 @@ $O(N\log{N})$ 스위핑이다. set으로 풀었다.
 
 C번은 너무 풀기 싫게 생겨서, 아마 A번이나 L번을 풀어볼 것 같다.
 
+*2021-10-16 A번 추가*
