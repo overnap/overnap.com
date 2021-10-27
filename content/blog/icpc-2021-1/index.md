@@ -1,5 +1,5 @@
 ---
-title: ICPC 2021 인터넷 예선
+title: ICPC 2021 인터넷 예선 후기
 date: 2021-10-14
 tags:
   - competitive programming

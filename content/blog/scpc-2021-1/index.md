@@ -1,5 +1,5 @@
 ---
-title: SCPC 2021 Round 1
+title: SCPC 2021 Round 1 후기
 date: 2021-08-06
 tags:
   - competitive programming

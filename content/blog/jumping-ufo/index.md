@@ -1,5 +1,5 @@
 ---
-title: Opera GX Game Jam; Jumping UFO
+title: Opera GX Game Jam 후기
 date: 2021-08-15
 tags:
   - game dev
