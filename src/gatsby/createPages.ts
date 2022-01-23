@@ -1,5 +1,5 @@
 import { GatsbyNode } from "gatsby"
-import path from 'path'
+import path from "path"
 import { BlogQuery, PostQuery, TagQuery } from "../graphqlTypes"
 
 interface queryResult<T> {
@@ -7,16 +7,17 @@ interface queryResult<T> {
   errors?: any
 }
 
-const assertQueryResult = (result: queryResult<any>) => result.errors === undefined
+const assertQueryResult = (result: queryResult<any>) =>
+  result.errors === undefined
 
-const createPages: GatsbyNode['createPages'] = async ({
+const createPages: GatsbyNode["createPages"] = async ({
   graphql,
   actions: { createPage },
-  reporter
+  reporter,
 }) => {
   const perPage = 5 // TODO: Change to modify in env or config
-  const Post = path.resolve('./src/templates/Post.tsx')
-  const Blog = path.resolve('./src/templates/Blog.tsx')
+  const Post = path.resolve("./src/templates/Post.tsx")
+  const Blog = path.resolve("./src/templates/Blog.tsx")
 
   // Create Post pages
 
@@ -31,7 +32,9 @@ const createPages: GatsbyNode['createPages'] = async ({
       ) {
         nodes {
           id
-          fields { slug }
+          fields {
+            slug
+          }
         }
       }
     }
@@ -39,7 +42,7 @@ const createPages: GatsbyNode['createPages'] = async ({
 
   if (!assertQueryResult(resultForPost)) {
     reporter.panicOnBuild(
-      'Error in loading markdown for post generation',
+      "Error in loading markdown for post generation",
       resultForPost.errors
     )
     return
@@ -48,7 +51,7 @@ const createPages: GatsbyNode['createPages'] = async ({
   const posts = resultForPost.data?.allMarkdownRemark.nodes
 
   if (posts === undefined) {
-    reporter.panicOnBuild('Null check error in post generation')
+    reporter.panicOnBuild("Null check error in post generation")
     return
   }
 
@@ -56,15 +59,15 @@ const createPages: GatsbyNode['createPages'] = async ({
     posts.forEach((post, index) => {
       const prevPostId = index === 0 ? null : posts[index - 1].id
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-  
+
       createPage({
         path: post.fields.slug,
         component: Post,
         context: {
           id: post.id,
           prevPostId,
-          nextPostId
-        }
+          nextPostId,
+        },
       })
     })
   }
@@ -82,7 +85,9 @@ const createPages: GatsbyNode['createPages'] = async ({
       ) {
         nodes {
           timeToRead
-          fields { slug }
+          fields {
+            slug
+          }
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
@@ -95,7 +100,7 @@ const createPages: GatsbyNode['createPages'] = async ({
 
   if (!assertQueryResult(resultForBlog)) {
     reporter.panicOnBuild(
-      'There was an error in markdown loading for page generation',
+      "There was an error in markdown loading for page generation",
       resultForBlog.errors
     )
     return
@@ -104,7 +109,7 @@ const createPages: GatsbyNode['createPages'] = async ({
   const heads = resultForBlog.data?.allMarkdownRemark.nodes
 
   if (heads === undefined) {
-    reporter.panicOnBuild('Null check error in page generation')
+    reporter.panicOnBuild("Null check error in page generation")
     return
   }
 
@@ -114,18 +119,18 @@ const createPages: GatsbyNode['createPages'] = async ({
         path: `blog/${i + 1}`,
         component: Blog,
         context: {
-          title: 'Blog',
+          title: "Blog",
           posts: heads.slice(i * perPage, (i + 1) * perPage),
-          basicPath: 'blog',
+          basicPath: "blog",
           pageIndex: i + 1,
-          pageCount: Math.ceil(heads.length / perPage)
-        }
+          pageCount: Math.ceil(heads.length / perPage),
+        },
       })
     }
   }
-  
+
   // Create Tag pages
-  
+
   const resultForTag: queryResult<TagQuery> = await graphql(`
     query tag {
       allMarkdownRemark(
@@ -139,7 +144,9 @@ const createPages: GatsbyNode['createPages'] = async ({
           edges {
             node {
               timeToRead
-              fields { slug }
+              fields {
+                slug
+              }
               frontmatter {
                 title
                 date(formatString: "MMMM DD, YYYY")
@@ -156,7 +163,7 @@ const createPages: GatsbyNode['createPages'] = async ({
 
   if (!assertQueryResult(resultForTag)) {
     reporter.panicOnBuild(
-      'There was an error in markdown loading for tag page generation',
+      "There was an error in markdown loading for tag page generation",
       resultForTag.errors
     )
     return
@@ -165,7 +172,7 @@ const createPages: GatsbyNode['createPages'] = async ({
   const tagGroups = resultForTag.data?.allMarkdownRemark.group
 
   if (tagGroups === undefined) {
-    reporter.panicOnBuild('Null check error in tag page generation')
+    reporter.panicOnBuild("Null check error in tag page generation")
     return
   }
 
@@ -173,20 +180,23 @@ const createPages: GatsbyNode['createPages'] = async ({
     tagGroups.map(group => {
       for (let i = 0; i * perPage < group.edges.length; i += 1) {
         createPage({
-          path: `tag/${group.fieldValue!.replace(' ', '-')}/${i + 1}`,
+          path: `tag/${group.fieldValue!.replace(" ", "-")}/${i + 1}`,
           component: Blog,
           context: {
-            title: group.fieldValue!.charAt(0).toUpperCase() + group.fieldValue!.slice(1),
-            posts: group.edges.slice(i * perPage, (i + 1) * perPage).map(edge => edge.node),
-            basicPath: `tag/${group.fieldValue!.replace(' ', '-')}`,
+            title:
+              group.fieldValue!.charAt(0).toUpperCase() +
+              group.fieldValue!.slice(1),
+            posts: group.edges
+              .slice(i * perPage, (i + 1) * perPage)
+              .map(edge => edge.node),
+            basicPath: `tag/${group.fieldValue!.replace(" ", "-")}`,
             pageIndex: i + 1,
-            pageCount: Math.ceil(group.edges.length / perPage)
-          }
+            pageCount: Math.ceil(group.edges.length / perPage),
+          },
         })
       }
     })
   }
-
 }
 
 export default createPages

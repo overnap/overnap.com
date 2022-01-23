@@ -23,15 +23,19 @@ const Time = styled.div`
 type UnArray<T extends any[]> = T extends (infer U)[] ? U : never
 
 interface Props {
-  post: UnArray<BlogQuery['allMarkdownRemark']['nodes']>
+  post: UnArray<BlogQuery["allMarkdownRemark"]["nodes"]>
 }
 
 const Preview = ({ post }: Props) => {
   return (
     <Container>
       <Title to={`${post.fields.slug}`}>{post.frontmatter.title}</Title>
-      <Time>{post.frontmatter.date} — {post.timeToRead} min read</Time>
-      {post.frontmatter.tags.map(tag => (<Tag key={tag} tag={tag} />))}
+      <Time>
+        {post.frontmatter.date} — {post.timeToRead} min read
+      </Time>
+      {post.frontmatter.tags.map(tag => (
+        <Tag key={tag} tag={tag} />
+      ))}
     </Container>
   )
 }

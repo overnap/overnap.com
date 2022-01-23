@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { PostTemplateQuery } from "../graphqlTypes"
 import SEO from "../components/SEO"
-import styled from '@emotion/styled'
-import Tag from '../components/Tag'
-import TOC from '../components/TOC'
-import Utterances from '../components/Utterances'
-import 'katex/dist/katex.min.css'
+import styled from "@emotion/styled"
+import Tag from "../components/Tag"
+import TOC from "../components/TOC"
+import Utterances from "../components/Utterances"
+import "katex/dist/katex.min.css"
 
 const Title = styled.h1`
   font-size: 2.75rem;
@@ -31,8 +31,8 @@ const Time = styled.div`
 
 const TOCAnchor = styled.div`
   display: none;
-  
-  @media screen and (min-width : 1280px) {
+
+  @media screen and (min-width: 1280px) {
     display: block;
     position: fixed;
     top: 10em;
@@ -48,7 +48,8 @@ const Section = styled.section`
     border-radius: 0.8em;
   }
 
-  h2, h3 {
+  h2,
+  h3 {
     margin: 3rem 0 1.25rem 0;
   }
 `
@@ -76,26 +77,31 @@ interface Props {
 const PostTemplate = ({ data }: Props) => {
   const post = data.markdownRemark!
   const { previous, next } = data
-  const [ currentHeader, setCurrentHeader ] = useState('')
+  const [currentHeader, setCurrentHeader] = useState("")
 
   if (!post) {
     return <div>ERROR!</div>
   }
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const headerElems = document.querySelectorAll<HTMLAnchorElement>('a.anchor')
+    if (typeof window !== "undefined") {
+      const headerElems = document.querySelectorAll<HTMLAnchorElement>(
+        "a.anchor"
+      )
       if (headerElems.length === 0) {
         return
       }
 
       window.onscroll = () => {
-        let memoizedHeader = ''
+        let memoizedHeader = ""
         const offset = 120
 
         // To highlight the header in TOC
-        if (headerElems[headerElems.length-1].getBoundingClientRect().bottom < offset) {
-          memoizedHeader = headerElems[headerElems.length-1].href
+        if (
+          headerElems[headerElems.length - 1].getBoundingClientRect().bottom <
+          offset
+        ) {
+          memoizedHeader = headerElems[headerElems.length - 1].href
         } else {
           for (const elem of headerElems) {
             if (offset < elem.getBoundingClientRect().bottom) {
@@ -106,10 +112,12 @@ const PostTemplate = ({ data }: Props) => {
           }
         }
 
-        setCurrentHeader(memoizedHeader.split('/').pop() || '')
+        setCurrentHeader(memoizedHeader.split("/").pop() || "")
       }
 
-      return () => { window.onscroll = null }
+      return () => {
+        window.onscroll = null
+      }
     }
 
     return () => {}
@@ -123,19 +131,25 @@ const PostTemplate = ({ data }: Props) => {
       />
       <Layout>
         <TOCAnchor>
-          <TOC html={data.markdownRemark!.tableOfContents!} currentHeader={currentHeader}/>
+          <TOC
+            html={data.markdownRemark!.tableOfContents!}
+            currentHeader={currentHeader}
+          />
         </TOCAnchor>
         <Article itemScope itemType="http://schema.org/Article">
           <header>
             <Title itemProp="headline">{post.frontmatter.title}</Title>
-            { post.frontmatter.description &&
-            <Description>{post.frontmatter.description}</Description> }
+            {post.frontmatter.description && (
+              <Description>{post.frontmatter.description}</Description>
+            )}
             <Time>
               <time>{post.frontmatter.date}</time>
               <span> — </span>
               <span>{post.timeToRead} min read</span>
             </Time>
-            {post.frontmatter.tags.map(tag => (<Tag key={tag} tag={tag} />))}
+            {post.frontmatter.tags.map(tag => (
+              <Tag key={tag} tag={tag} />
+            ))}
           </header>
           <Section
             dangerouslySetInnerHTML={{ __html: post.html! }}
@@ -158,7 +172,7 @@ const PostTemplate = ({ data }: Props) => {
             <div />
           )}
         </PostNav>
-        <Utterances theme={'github-light'} />
+        <Utterances theme={"github-light"} />
       </Layout>
     </>
   )
@@ -167,11 +181,7 @@ const PostTemplate = ({ data }: Props) => {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query postTemplate (
-    $id: String!
-    $prevPostId: String
-    $nextPostId: String
-  ) {
+  query postTemplate($id: String!, $prevPostId: String, $nextPostId: String) {
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
@@ -186,12 +196,20 @@ export const pageQuery = graphql`
       }
     }
     previous: markdownRemark(id: { eq: $prevPostId }) {
-      fields { slug }
-      frontmatter { title }
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+      }
     }
     next: markdownRemark(id: { eq: $nextPostId }) {
-      fields { slug }
-      frontmatter { title }
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+      }
     }
   }
 `

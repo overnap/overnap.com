@@ -47,17 +47,22 @@ const Header = () => {
   `)
 
   if (!data.site?.siteMetadata?.title) {
-    return (<div>Error!</div>)
+    return <div>Error!</div>
   }
 
   return (
     <StyledHeader>
-      <Title to='/'>{data.site!.siteMetadata!.title}</Title>
+      <Title to="/">{data.site!.siteMetadata!.title}</Title>
       <div>
-        <Page to='/about'>About</Page>
-        <Page to='/blog/1'>Blog</Page>
-        <Github href={'https://github.com/' + data.site!.siteMetadata!.github}
-                target='_blank' rel='noopener noreferrer'>Github</Github>
+        <Page to="/about">About</Page>
+        <Page to="/blog/1">Blog</Page>
+        <Github
+          href={"https://github.com/" + data.site!.siteMetadata!.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Github
+        </Github>
       </div>
     </StyledHeader>
   )

@@ -17,18 +17,18 @@ interface Props {
 
 const About = ({ data }: Props) => {
   if (!data.markdownRemark) {
-    return (<div>Error!</div>)
+    return <div>Error!</div>
   }
 
   return (
     <>
-      <SEO title='About' />
+      <SEO title="About" />
       <Layout>
         <Title>{data.markdownRemark!.frontmatter!.title!}</Title>
         <Section
-            dangerouslySetInnerHTML={{ __html: data.markdownRemark!.html! }}
-            itemProp="articleBody"
-          />
+          dangerouslySetInnerHTML={{ __html: data.markdownRemark!.html! }}
+          itemProp="articleBody"
+        />
       </Layout>
     </>
   )
@@ -45,7 +45,9 @@ export const pageQuery = graphql`
       }
     ) {
       html
-      frontmatter { title }
+      frontmatter {
+        title
+      }
     }
   }
 `

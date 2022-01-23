@@ -23,17 +23,18 @@ const Tags = ({ data }: Props) => {
     return <div>Error!</div>
   }
 
-  groups.sort((a, b) => { return b.totalCount - a.totalCount })
+  groups.sort((a, b) => {
+    return b.totalCount - a.totalCount
+  })
 
   return (
     <>
-      <SEO title='Tags' />
+      <SEO title="Tags" />
       <Layout>
         <Title>Tags</Title>
         {groups.map(tag => (
           <Line>
-            <Tag tag={tag.fieldValue!} />
-            - {tag.totalCount} posts
+            <Tag tag={tag.fieldValue!} />- {tag.totalCount} posts
           </Line>
         ))}
       </Layout>

@@ -34,23 +34,25 @@ interface Props {
 
 const Home = ({ data }: Props) => {
   if (!data.main || !data.project || !data.allMarkdownRemark?.nodes) {
-    return (<div>Error!</div>)
+    return <div>Error!</div>
   }
 
   return (
     <>
-      <SEO title='Home' />
+      <SEO title="Home" />
       <Layout>
         <Title>{data.main!.frontmatter!.title!}</Title>
         <Section
-            dangerouslySetInnerHTML={{ __html: data.main!.html! }}
-            itemProp="articleBody"
-          />
+          dangerouslySetInnerHTML={{ __html: data.main!.html! }}
+          itemProp="articleBody"
+        />
         <HeaderContainer>
           <Divider>Blog</Divider>
-          <TagLink to='/blog/1'>View more</TagLink>
+          <TagLink to="/blog/1">View more</TagLink>
         </HeaderContainer>
-        {data.allMarkdownRemark.nodes.map(post => (<Preview key={post.fields.slug} post={post}/>))}
+        {data.allMarkdownRemark.nodes.map(post => (
+          <Preview key={post.fields.slug} post={post} />
+        ))}
         {/* <Divider>Projects</Divider>
         <Section
             dangerouslySetInnerHTML={{ __html: data.project!.html! }}
@@ -72,7 +74,9 @@ export const pageQuery = graphql`
       }
     ) {
       html
-      frontmatter { title }
+      frontmatter {
+        title
+      }
     }
     project: markdownRemark(
       fields: {
@@ -83,22 +87,24 @@ export const pageQuery = graphql`
       html
     }
     allMarkdownRemark(
-        limit: 3
-        filter: {
-          fields: { sourceInstanceName: { eq: "blog" } }
-          frontmatter: { published: { eq: true } }
+      limit: 3
+      filter: {
+        fields: { sourceInstanceName: { eq: "blog" } }
+        frontmatter: { published: { eq: true } }
+      }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        timeToRead
+        fields {
+          slug
         }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
-        nodes {
-          timeToRead
-          fields { slug }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            tags
-          }
+        frontmatter {
+          title
+          date(formatString: "MMMM DD, YYYY")
+          tags
         }
       }
+    }
   }
 `

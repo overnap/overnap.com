@@ -1,7 +1,7 @@
-import { GatsbyNode } from 'gatsby';
+import { GatsbyNode } from "gatsby"
 
-const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = async ({
-  actions: { createTypes }
+const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = async ({
+  actions: { createTypes },
 }) => {
   createTypes(`
     type MarkdownRemark implements Node {

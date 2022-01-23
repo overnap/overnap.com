@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import styled from "@emotion/styled"
 
 const Container = styled.div`
@@ -40,7 +40,7 @@ const Contents = styled.div<{ currentHeader: string }>`
 `
 
 interface Props {
-  html: string,
+  html: string
   currentHeader: string
 }
 
@@ -48,9 +48,14 @@ const TOC = ({ html, currentHeader }: Props) => {
   return html ? (
     <Container>
       <Title>Table Of Contents</Title>
-      <Contents dangerouslySetInnerHTML={{ __html: html }} currentHeader={currentHeader}/>
+      <Contents
+        dangerouslySetInnerHTML={{ __html: html }}
+        currentHeader={currentHeader}
+      />
     </Container>
-  ) : (<React.Fragment />)
+  ) : (
+    <React.Fragment />
+  )
 }
 
 export default TOC

@@ -41,10 +41,10 @@ const BlogNav = styled.nav`
 
 interface Props {
   pageContext: {
-    title: string,
-    posts: BlogQuery['allMarkdownRemark']['nodes'],
-    basicPath: string,
-    pageIndex: number,
+    title: string
+    posts: BlogQuery["allMarkdownRemark"]["nodes"]
+    basicPath: string
+    pageIndex: number
     pageCount: number
   }
 }
@@ -62,9 +62,11 @@ const BlogTemplate = ({ pageContext }: Props) => {
       <Layout>
         <HeaderContainer>
           <Title>{title}</Title>
-          <TagLink to='/tags'>View all tags</TagLink>
+          <TagLink to="/tags">View all tags</TagLink>
         </HeaderContainer>
-        {posts.map(post => (<Preview key={post.fields.slug} post={post}/>))}
+        {posts.map(post => (
+          <Preview key={post.fields.slug} post={post} />
+        ))}
         <BlogNav>
           {pageIndex > 1 ? (
             <Link to={`/${basicPath}/${pageIndex - 1}`} rel="prev">

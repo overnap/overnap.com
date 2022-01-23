@@ -1,8 +1,8 @@
-import { css, Global } from "@emotion/react";
+import { css, Global } from "@emotion/react"
 
 const reset = css`
   html {
-    font-family: 'Noto Sans CJK KR';
+    font-family: "Noto Sans KR";
     font-size: 17px;
     font-weight: 400;
     line-height: 1.7;
@@ -20,7 +20,9 @@ const reset = css`
     }
   }
 
-  body, #___gatsby, #gatsby-focus-wrapper {
+  body,
+  #___gatsby,
+  #gatsby-focus-wrapper {
     margin: 0;
     min-height: calc(100vh - 0.9em);
   }
@@ -44,20 +46,32 @@ const reset = css`
     color: var(--color-active);
   }
 
-  a:active, a:focus {
+  a:active,
+  a:focus {
     outline: 0;
     border: none;
   }
 
-  h1, h2, h3, h4, h5, h6, div, span {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  div,
+  span {
     color: var(--color-black);
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-weight: 700;
   }
 
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     font-weight: 500;
   }
 

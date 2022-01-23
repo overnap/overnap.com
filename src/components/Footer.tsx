@@ -29,12 +29,14 @@ const Footer = () => {
   `)
 
   if (!data.site?.siteMetadata?.author) {
-    return (<div>Error!</div>)
+    return <div>Error!</div>
   }
 
   return (
     <StyledFooter>
-      <Text>© {data.site!.buildTime!} by {data.site!.siteMetadata!.author!}</Text>
+      <Text>
+        © {data.site!.buildTime!} by {data.site!.siteMetadata!.author!}
+      </Text>
       <Text>Powered by Gatsby.js</Text>
     </StyledFooter>
   )

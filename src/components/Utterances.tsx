@@ -19,21 +19,21 @@ const Utterances = ({ theme }: Props) => {
   `)
 
   if (!data.site?.siteMetadata?.repository) {
-    return (<div>Error!</div>)
+    return <div>Error!</div>
   }
 
   useLayoutEffect(() => {
-    const script = document.createElement('script')
+    const script = document.createElement("script")
     const attributes = {
       theme,
-      src: 'https://utteranc.es/client.js',
-      'repo': data.site!.siteMetadata!.repository!,
-      'issue-term': 'pathname',
-      label: 'comment',
-      crossOrigin: 'anonymous',
-      async: 'true'
+      src: "https://utteranc.es/client.js",
+      repo: data.site!.siteMetadata!.repository!,
+      "issue-term": "pathname",
+      label: "comment",
+      crossOrigin: "anonymous",
+      async: "true",
     }
-    
+
     Object.entries(attributes).forEach(([key, value]) => {
       script.setAttribute(key, value)
     })
@@ -41,9 +41,7 @@ const Utterances = ({ theme }: Props) => {
     containerRef.current?.appendChild(script)
   }, [])
 
-  return (
-    <div ref={containerRef} />
-  )
+  return <div ref={containerRef} />
 }
 
 export default Utterances
