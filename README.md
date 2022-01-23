@@ -9,6 +9,8 @@ Ready-to-use starter to make a blog.
 ## Features
 
 - Typescript
+- Tag
+- SEO
 - TOC
 - Utterances
 - Prism.js, Katex, and other annoying settings...
@@ -44,7 +46,7 @@ If you want to use google gtag, enter your tracking id in the same file.
 
 Blog posts are written in `content/post`.
 
-To edit the landing page or about page, see `content/essentail`.
+To customize the landing page or about page, see `content/essentail`.
 
 (Optional) If you are not a Korean, I recommend customizing fonts in `src/components/SEO.tsx`, `src/components/GlobalStyle.tsx`, and `static/font.css`.
 
