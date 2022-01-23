@@ -11,7 +11,7 @@ module.exports = {
     github: "Overnap",
     email: "overnapworks@gmail.com",
     description: "a dev blog of overnap",
-    siteUrl: "https://localhost:8000",
+    siteUrl: "https://overnap.com",
     repository: "Overnap/overnap.com", // for utterances
   },
   plugins: [
