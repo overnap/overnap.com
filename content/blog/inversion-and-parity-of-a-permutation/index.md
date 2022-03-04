@@ -15,8 +15,6 @@ published: true
 
 수열의 연속된 세 개의 값 $a_i, a_{i+1}, a_{i+2}$를 $a_{i+2}, a_i, a_{i+1}$로 바꾸는 shift 연산을 써서 수열 A를 B로 만들 수 있는지 묻는 문제다.
 
-Inversion count의 기우성은 곧 순열의 기우성임을 이용한다. 이게 무슨 소리인가?
-
 우선 swap 연산을 생각하자. 순열의 어떤 인덱스 $i$, $j$의 값을 swap하는 연산이다. 이때 inversion count는 홀짝이 바뀐다.
 
 왜 그런지 살펴보자. 일단 $(i, j)$는 inversion이 뒤바뀔 것이다. $i$보다 작거나 $j$보다 큰 인덱스는 영향을 받지 않는다. 그리고 $i<k<j$인 $k$는 $(i, k)$와 $(k, j)$가 짝을 이루므로 짝수 개 만큼의 inversion이 변화한다.[^1] 따라서 swap 연산은 항상 inversion count의 홀짝을 바꾼다.
@@ -30,6 +28,8 @@ Inversion count의 기우성은 곧 순열의 기우성임을 이용한다. 이�
 ![well-known](./well-known.png)
 
 거의 동일한 문제인 [백준 5000 빵 정렬](https://www.acmicpc.net/problem/5000)은 $O(N)$에 풀이할 수도 있다. 좀 더 나아가보자.
+
+Inversion count의 기우성은 곧 순열의 기우성임을 이용한다. 이게 무슨 소리인가?
 
 어떤 순열을 trivial한 순열(1, 2, 3...)로부터 swap을 통해 만든다고 하자. 이때 어떠한 순서로 swap하든 swap 연산 횟수의 기우성이 변하지 않는다는 걸 알 수 있다. 즉 순열이 결정되면 이러한 기우성도 결정된다. 이걸 순열의 기우성이라 한다.
 
