@@ -10,7 +10,9 @@ published: true
 
 배운 김에 작년 ICPC K번이었던 [백준 23576 Stock Price Prediction](https://www.acmicpc.net/problem/23576)을 풀어봤다. 대회 중 문자열과 세그를 합친 문제라고 추측했으나 결국 풀지 못했던 문제다.
 
-재밌게 풀고 나서 solved.ac를 들어가 보니 또 웰노운이라는 말을 한다. CEOI 기출인 [백준 3308 Matching](https://www.acmicpc.net/problem/3308), 서강대 SPC 기출 [백준 20298 파인애플 피자](https://www.acmicpc.net/problem/20298)가 같은 아이디어고 SCPC 기출에도 나왔다고 한다.
+재밌게 풀고 나서 solved.ac를 들어가 보니 또 웰노운이라는 말을 한다. CEOI 기출인 [백준 3308 Matching](https://www.acmicpc.net/problem/3308), 서강대 SPC 기출 [백준 20298 파인애플 피자](https://www.acmicpc.net/problem/20298)가 같은 아이디어고 SCPC 기출에도 나왔다고 한다.[^1]
+
+[^1]:[2021 ICPC Seoul Regional - 구사과 블로그](https://koosaga.com/284)
 
 나만 모르는 웰노운이기도 하고, 접근이 재밌어서 간단히 정리해 본다.
 
