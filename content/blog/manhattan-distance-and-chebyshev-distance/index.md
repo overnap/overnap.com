@@ -23,6 +23,8 @@ published: true
 
 $L_p$ norm에 대해 안다면 $L_1$ norm과 $L_{\infin}$ norm이 비슷하게 생겼단 걸 알 것이다. 둘 다 contour를 보면 정사각형 모양이다. 회전하고 크기를 바꾸면 딱 알맞을 것 같다.
 
+![plot.png](./plot.png)
+
 실제로 그렇다. 좌표를 45° 회전시키고 $L_1$ norm을 구하면 $L_{\infin}$의 두 배가 나온다. 즉 다음과 같다:
 
 $$\max(|x|,|y|)=\frac{1}{2}|x+y|+\frac{1}{2}|x-y|$$
