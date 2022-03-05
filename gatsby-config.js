@@ -39,6 +39,7 @@ module.exports = {
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-netlify",
+    "gatsby-plugin-advanced-sitemap",
     {
       resolve: "gatsby-transformer-remark",
       options: {
