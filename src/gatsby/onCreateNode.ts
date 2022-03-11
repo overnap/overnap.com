@@ -8,7 +8,7 @@ const onCreateNode: GatsbyNode["onCreateNode"] = ({
 }) => {
   if (node.internal.type === "MarkdownRemark") {
     // Create sourceInstanceName
-    const source = getNode(node.parent!).sourceInstanceName as string
+    const source = getNode(node.parent!)!.sourceInstanceName as string
 
     createNodeField({
       node,
