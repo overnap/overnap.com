@@ -16,7 +16,9 @@ Prefix Sum은 고난도 문제에서 예상치 못한 쓰임새로 뒤통수를 
 
 쿼리할 노드 $u$, $v$와 두 노드의 LCA $t$를 생각하자. $psum[u]$와 $psum[v]$에 1을 더하고 $psum[t]$에 2를 뺀다. 이렇게 모든 쿼리를 처리한 후 부모 방향으로 propagate한다. 그러면 $psum[x]$를 $x$와 그 부모 사이 간선의 값이라고 볼 때, $u \rightarrow t$와 $v \rightarrow t$ 사이 간선에만 영향을 줄 것이다.
 
-각 쿼리는 LCA를 구하는 방법에 따라 $O(1)$ 혹은 $O(\log{N})$이 걸린다. propagate는 $O(N)$이므로 전체 시간복잡도는 $O(N)$이니 매우 강력하다.
+각 쿼리는 LCA를 구하는 방법에 따라 $O(1)$ 혹은 $O(\log{N})$이 걸린다. 전처리가 $O(N\log{N})$, propagate는 $O(N)$이므로 전체 시간복잡도는 $O(Q+N\log{N})$이다.
+
+사실 전형적인 오일러 투어 테크닉에서 세그먼트 트리를 누적합으로 바꾼 거다. 따라서 실시간으로 풀고 싶다면 ETT로 쿼리당 $O(\log{N})$에 가능하다.
 
 [BOJ 11960](https://www.acmicpc.net/problem/11960)
 
