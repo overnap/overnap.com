@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet"
-import { graphql, useStaticQuery } from "gatsby"
-import { SeoQuery } from "../graphqlTypes"
+import { Helmet } from 'react-helmet'
+import { graphql, useStaticQuery } from 'gatsby'
+import { SeoQuery } from '../graphqlTypes'
 
 type Metadata = ({ name: string } | { property: string }) & { content: string }
 
@@ -11,7 +11,7 @@ interface Props {
   title: string
 }
 
-const SEO = ({ description, lang = "ko", meta = [], title }: Props) => {
+const SEO = ({ description, lang = 'ko', meta = [], title }: Props) => {
   const data = useStaticQuery<SeoQuery>(graphql`
     query seo {
       site {
@@ -24,24 +24,24 @@ const SEO = ({ description, lang = "ko", meta = [], title }: Props) => {
   `)
 
   const metaDescription =
-    description || data.site?.siteMetadata?.description || ""
+    description || data.site?.siteMetadata?.description || ''
   const defaultTitle = data.site?.siteMetadata?.title || undefined
   const defaultMeta: Array<Metadata> = [
     {
-      name: "description",
+      name: 'description',
       content: metaDescription,
     },
     {
-      property: "og:title",
+      property: 'og:title',
       content: title,
     },
     {
-      property: "og:description",
+      property: 'og:description',
       content: metaDescription,
     },
     {
-      property: "og:type",
-      content: "website",
+      property: 'og:type',
+      content: 'website',
     },
   ]
 

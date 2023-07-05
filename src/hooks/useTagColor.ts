@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useMemo } from 'react'
 
 const hslToRgb = (h: number, s: number, l: number) => {
   let r, g, b
@@ -43,11 +43,11 @@ const useTagColor = (tag: string) => {
       0.88 +
       Math.min(
         0,
-        128 * (hue - 0.2) * (hue - 0.3) * (hue - 0.4) * (hue - 0.5) - 0.25
+        128 * (hue - 0.2) * (hue - 0.3) * (hue - 0.4) * (hue - 0.5) - 0.25,
       )
     const [r, g, b] = hslToRgb(hue, sat, 0.85)
 
-    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
+    return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
   }, [tag])
 
   return color

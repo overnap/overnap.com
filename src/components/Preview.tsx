@@ -1,7 +1,7 @@
-import styled from "@emotion/styled"
-import { Link } from "gatsby"
-import { BlogQuery } from "../graphqlTypes"
-import Tag from "./Tag"
+import styled from '@emotion/styled'
+import { Link } from 'gatsby'
+import { BlogQuery } from '../graphqlTypes'
+import Tag from './Tag'
 
 const Container = styled.div`
   padding: 25px 3px;
@@ -23,7 +23,7 @@ const Time = styled.div`
 type UnArray<T extends any[]> = T extends (infer U)[] ? U : never
 
 interface Props {
-  post: UnArray<BlogQuery["allMarkdownRemark"]["nodes"]>
+  post: UnArray<BlogQuery['allMarkdownRemark']['nodes']>
 }
 
 const Preview = ({ post }: Props) => {

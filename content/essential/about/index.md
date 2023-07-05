@@ -18,7 +18,7 @@ Optimization, Adversarial Learning
 
 **Kyung Hee University (KHU)**
 
-Undergraduate student in computer engineering,  *Mar. 2020 ~*
+Undergraduate student in computer engineering, _Mar. 2020 ~_
 
 #### Awards and Honors
 
@@ -26,17 +26,17 @@ Undergraduate student in computer engineering,  *Mar. 2020 ~*
 
 shake! Collegiate Programming Contest in Gyeongin
 
-​	*2021, Second Prize (3rd.)*
+​ _2021, Second Prize (3rd.)_
 
 Kyung Hee University Programming Contest
 
-​	*2022 Spring, First Prize*
+​ _2022 Spring, First Prize_
 
-​	*2021 Fall, First Prize*
+​ _2021 Fall, First Prize_
 
-​	*2021 Spring, Second Prize*
+​ _2021 Spring, Second Prize_
 
-​	*2020 Fall, Second Prize (3rd.)*
+​ _2020 Fall, Second Prize (3rd.)_
 
 #### Skills
 
@@ -45,4 +45,3 @@ C++ for Competitive Programming
 Python 3 & PyTorch
 
 Typescript & React.js
-

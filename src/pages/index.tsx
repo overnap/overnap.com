@@ -1,11 +1,11 @@
-import styled from "@emotion/styled"
-import { graphql, Link } from "gatsby"
-import React from "react"
-import Layout from "../components/Layout"
-import Preview from "../components/Preview"
-import SEO from "../components/SEO"
-import Title from "../components/Title"
-import { HomeQuery } from "../graphqlTypes"
+import styled from '@emotion/styled'
+import { graphql, Link } from 'gatsby'
+import React from 'react'
+import Layout from '../components/Layout'
+import Preview from '../components/Preview'
+import SEO from '../components/SEO'
+import Title from '../components/Title'
+import { HomeQuery } from '../graphqlTypes'
 
 const Divider = styled.h1`
   font-size: 2.5rem;
@@ -92,7 +92,7 @@ export const pageQuery = graphql`
         fields: { sourceInstanceName: { eq: "blog" } }
         frontmatter: { published: { eq: true } }
       }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
         timeToRead

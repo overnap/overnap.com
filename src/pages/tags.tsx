@@ -1,11 +1,11 @@
-import styled from "@emotion/styled"
-import { graphql } from "gatsby"
-import React from "react"
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
-import Tag from "../components/Tag"
-import Title from "../components/Title"
-import { TagsQuery } from "../graphqlTypes"
+import styled from '@emotion/styled'
+import { graphql } from 'gatsby'
+import React from 'react'
+import Layout from '../components/Layout'
+import SEO from '../components/SEO'
+import Tag from '../components/Tag'
+import Title from '../components/Title'
+import { TagsQuery } from '../graphqlTypes'
 
 const Line = styled.div`
   margin: 11px 0px;
@@ -47,7 +47,7 @@ export default Tags
 export const pageQuery = graphql`
   query tags {
     allMarkdownRemark {
-      group(field: frontmatter___tags) {
+      group(field: { frontmatter: { tags: SELECT } }) {
         fieldValue
         totalCount
       }

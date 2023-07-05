@@ -1,10 +1,10 @@
-import styled from "@emotion/styled"
-import { Link } from "gatsby"
-import React from "react"
-import Layout from "../components/Layout"
-import Preview from "../components/Preview"
-import SEO from "../components/SEO"
-import { BlogQuery } from "../graphqlTypes"
+import styled from '@emotion/styled'
+import { Link } from 'gatsby'
+import React from 'react'
+import Layout from '../components/Layout'
+import Preview from '../components/Preview'
+import SEO from '../components/SEO'
+import { BlogQuery } from '../graphqlTypes'
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const BlogNav = styled.nav`
 interface Props {
   pageContext: {
     title: string
-    posts: BlogQuery["allMarkdownRemark"]["nodes"]
+    posts: BlogQuery['allMarkdownRemark']['nodes']
     basicPath: string
     pageIndex: number
     pageCount: number

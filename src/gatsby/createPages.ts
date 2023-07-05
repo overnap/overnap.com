@@ -1,6 +1,6 @@
-import { GatsbyNode } from "gatsby"
-import path from "path"
-import { BlogQuery, PostQuery, TagQuery } from "../graphqlTypes"
+import { GatsbyNode } from 'gatsby'
+import path from 'path'
+import { BlogQuery, PostQuery, TagQuery } from '../graphqlTypes'
 
 interface queryResult<T> {
   data?: T
@@ -10,14 +10,14 @@ interface queryResult<T> {
 const assertQueryResult = (result: queryResult<any>) =>
   result.errors === undefined
 
-const createPages: GatsbyNode["createPages"] = async ({
+const createPages: GatsbyNode['createPages'] = async ({
   graphql,
   actions: { createPage },
   reporter,
 }) => {
   const perPage = 5 // TODO: Change to modify in env or config
-  const Post = path.resolve("./src/templates/Post.tsx")
-  const Blog = path.resolve("./src/templates/Blog.tsx")
+  const Post = path.resolve('./src/templates/Post.tsx')
+  const Blog = path.resolve('./src/templates/Blog.tsx')
 
   // Create Post pages
 
@@ -28,7 +28,7 @@ const createPages: GatsbyNode["createPages"] = async ({
           fields: { sourceInstanceName: { eq: "blog" } }
           frontmatter: { published: { eq: true } }
         }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
       ) {
         nodes {
           id
@@ -42,8 +42,8 @@ const createPages: GatsbyNode["createPages"] = async ({
 
   if (!assertQueryResult(resultForPost)) {
     reporter.panicOnBuild(
-      "Error in loading markdown for post generation",
-      resultForPost.errors
+      'Error in loading markdown for post generation',
+      resultForPost.errors,
     )
     return
   }
@@ -51,7 +51,7 @@ const createPages: GatsbyNode["createPages"] = async ({
   const posts = resultForPost.data?.allMarkdownRemark.nodes
 
   if (posts === undefined) {
-    reporter.panicOnBuild("Null check error in post generation")
+    reporter.panicOnBuild('Null check error in post generation')
     return
   }
 
@@ -81,7 +81,7 @@ const createPages: GatsbyNode["createPages"] = async ({
           fields: { sourceInstanceName: { eq: "blog" } }
           frontmatter: { published: { eq: true } }
         }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
       ) {
         nodes {
           timeToRead
@@ -100,8 +100,8 @@ const createPages: GatsbyNode["createPages"] = async ({
 
   if (!assertQueryResult(resultForBlog)) {
     reporter.panicOnBuild(
-      "There was an error in markdown loading for page generation",
-      resultForBlog.errors
+      'There was an error in markdown loading for page generation',
+      resultForBlog.errors,
     )
     return
   }
@@ -109,7 +109,7 @@ const createPages: GatsbyNode["createPages"] = async ({
   const heads = resultForBlog.data?.allMarkdownRemark.nodes
 
   if (heads === undefined) {
-    reporter.panicOnBuild("Null check error in page generation")
+    reporter.panicOnBuild('Null check error in page generation')
     return
   }
 
@@ -119,9 +119,9 @@ const createPages: GatsbyNode["createPages"] = async ({
         path: `blog/${i + 1}`,
         component: Blog,
         context: {
-          title: "Blog",
+          title: 'Blog',
           posts: heads.slice(i * perPage, (i + 1) * perPage),
-          basicPath: "blog",
+          basicPath: 'blog',
           pageIndex: i + 1,
           pageCount: Math.ceil(heads.length / perPage),
         },
@@ -138,9 +138,9 @@ const createPages: GatsbyNode["createPages"] = async ({
           fields: { sourceInstanceName: { eq: "blog" } }
           frontmatter: { published: { eq: true } }
         }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
       ) {
-        group(field: frontmatter___tags) {
+        group(field: { frontmatter: { tags: SELECT } }) {
           edges {
             node {
               timeToRead
@@ -163,8 +163,8 @@ const createPages: GatsbyNode["createPages"] = async ({
 
   if (!assertQueryResult(resultForTag)) {
     reporter.panicOnBuild(
-      "There was an error in markdown loading for tag page generation",
-      resultForTag.errors
+      'There was an error in markdown loading for tag page generation',
+      resultForTag.errors,
     )
     return
   }
@@ -172,7 +172,7 @@ const createPages: GatsbyNode["createPages"] = async ({
   const tagGroups = resultForTag.data?.allMarkdownRemark.group
 
   if (tagGroups === undefined) {
-    reporter.panicOnBuild("Null check error in tag page generation")
+    reporter.panicOnBuild('Null check error in tag page generation')
     return
   }
 
@@ -180,7 +180,7 @@ const createPages: GatsbyNode["createPages"] = async ({
     tagGroups.map(group => {
       for (let i = 0; i * perPage < group.edges.length; i += 1) {
         createPage({
-          path: `tag/${group.fieldValue!.replace(" ", "-")}/${i + 1}`,
+          path: `tag/${group.fieldValue!.replace(' ', '-')}/${i + 1}`,
           component: Blog,
           context: {
             title:
@@ -189,7 +189,7 @@ const createPages: GatsbyNode["createPages"] = async ({
             posts: group.edges
               .slice(i * perPage, (i + 1) * perPage)
               .map(edge => edge.node),
-            basicPath: `tag/${group.fieldValue!.replace(" ", "-")}`,
+            basicPath: `tag/${group.fieldValue!.replace(' ', '-')}`,
             pageIndex: i + 1,
             pageCount: Math.ceil(group.edges.length / perPage),
           },

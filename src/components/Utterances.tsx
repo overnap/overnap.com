@@ -1,6 +1,6 @@
-import { graphql, useStaticQuery } from "gatsby"
-import { useLayoutEffect, useRef } from "react"
-import { UtterancesQuery } from "../graphqlTypes"
+import { graphql, useStaticQuery } from 'gatsby'
+import { useLayoutEffect, useRef } from 'react'
+import { UtterancesQuery } from '../graphqlTypes'
 
 interface Props {
   theme: string
@@ -23,15 +23,15 @@ const Utterances = ({ theme }: Props) => {
   }
 
   useLayoutEffect(() => {
-    const script = document.createElement("script")
+    const script = document.createElement('script')
     const attributes = {
       theme,
-      src: "https://utteranc.es/client.js",
+      src: 'https://utteranc.es/client.js',
       repo: data.site!.siteMetadata!.repository!,
-      "issue-term": "pathname",
-      label: "comment",
-      crossOrigin: "anonymous",
-      async: "true",
+      'issue-term': 'pathname',
+      label: 'comment',
+      crossOrigin: 'anonymous',
+      async: 'true',
     }
 
     Object.entries(attributes).forEach(([key, value]) => {

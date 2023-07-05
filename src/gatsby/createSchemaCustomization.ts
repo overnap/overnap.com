@@ -1,9 +1,8 @@
-import { GatsbyNode } from "gatsby"
+import { GatsbyNode } from 'gatsby'
 
-const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = async ({
-  actions: { createTypes },
-}) => {
-  createTypes(`
+const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
+  async ({ actions: { createTypes } }) => {
+    createTypes(`
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter!
       fields: Fields!
@@ -22,6 +21,6 @@ const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = async
       sourceInstanceName: String!
     }
   `)
-}
+  }
 
 export default createSchemaCustomization

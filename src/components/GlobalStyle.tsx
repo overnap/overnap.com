@@ -1,8 +1,8 @@
-import { css, Global } from "@emotion/react"
+import { css, Global } from '@emotion/react'
 
 const reset = css`
   html {
-    font-family: "Noto Sans KR";
+    font-family: 'Noto Sans KR';
     font-size: 17px;
     font-weight: 400;
     line-height: 1.7;
@@ -106,7 +106,7 @@ const reset = css`
   }
 
   // for inline code block
-  code[class="language-text"] {
+  code[class='language-text'] {
     margin: 0 2px;
     padding: 1px 4px 2px !important;
     background-color: var(--color-white) !important;

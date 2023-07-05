@@ -1,18 +1,18 @@
-import { GatsbyNode } from "gatsby"
-import { createFilePath } from "gatsby-source-filesystem"
+import { GatsbyNode } from 'gatsby'
+import { createFilePath } from 'gatsby-source-filesystem'
 
-const onCreateNode: GatsbyNode["onCreateNode"] = ({
+const onCreateNode: GatsbyNode['onCreateNode'] = ({
   node,
   actions: { createNodeField },
   getNode,
 }) => {
-  if (node.internal.type === "MarkdownRemark") {
+  if (node.internal.type === 'MarkdownRemark') {
     // Create sourceInstanceName
     const source = getNode(node.parent!)!.sourceInstanceName as string
 
     createNodeField({
       node,
-      name: "sourceInstanceName",
+      name: 'sourceInstanceName',
       value: source,
     })
 
@@ -20,7 +20,7 @@ const onCreateNode: GatsbyNode["onCreateNode"] = ({
 
     createNodeField({
       node,
-      name: "slug",
+      name: 'slug',
       value: pathName,
     })
   }

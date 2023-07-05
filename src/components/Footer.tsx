@@ -1,6 +1,6 @@
-import styled from "@emotion/styled"
-import { graphql, useStaticQuery } from "gatsby"
-import { FooterQuery } from "../graphqlTypes"
+import styled from '@emotion/styled'
+import { graphql, useStaticQuery } from 'gatsby'
+import { FooterQuery } from '../graphqlTypes'
 
 const StyledFooter = styled.footer`
   margin: 2.5em auto 0.9em;

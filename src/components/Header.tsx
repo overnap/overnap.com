@@ -1,6 +1,6 @@
-import styled from "@emotion/styled"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import { HeaderQuery } from "../graphqlTypes"
+import styled from '@emotion/styled'
+import { graphql, Link, useStaticQuery } from 'gatsby'
+import { HeaderQuery } from '../graphqlTypes'
 
 const StyledHeader = styled.header`
   margin: 0.9em auto 0.9em;
@@ -57,7 +57,7 @@ const Header = () => {
         <Page to="/about">About</Page>
         <Page to="/blog/1">Blog</Page>
         <Github
-          href={"https://github.com/" + data.site!.siteMetadata!.github}
+          href={'https://github.com/' + data.site!.siteMetadata!.github}
           target="_blank"
           rel="noopener noreferrer"
         >

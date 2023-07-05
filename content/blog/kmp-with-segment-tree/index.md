@@ -12,7 +12,7 @@ published: true
 
 재밌게 풀고 나서 solved.ac를 들어가 보니 또 웰노운이라는 말을 한다. CEOI 기출인 [백준 3308 Matching](https://www.acmicpc.net/problem/3308), 서강대 SPC 기출 [백준 20298 파인애플 피자](https://www.acmicpc.net/problem/20298)가 같은 아이디어고 SCPC 기출에도 나왔다고 한다.[^1]
 
-[^1]:[2021 ICPC Seoul Regional - 구사과 블로그](https://koosaga.com/284)
+[^1]: [2021 ICPC Seoul Regional - 구사과 블로그](https://koosaga.com/284)
 
 나만 모르는 웰노운이기도 하고, 접근이 재밌어서 간단히 정리해 본다.
 
@@ -135,4 +135,3 @@ int main() {
 	return 0;
 }
 ```
-

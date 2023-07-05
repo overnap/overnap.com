@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React from 'react'
+import styled from '@emotion/styled'
 
 const Container = styled.div`
   display: flex;
@@ -32,7 +32,7 @@ const Contents = styled.div<{ currentHeader: string }>`
     transition: color 0.15s, font-size 0.15s, font-weight 0.15s;
   }
 
-  a[href="${props => props.currentHeader}"] {
+  a[href='${props => props.currentHeader}'] {
     font-size: 1rem;
     font-weight: 500;
     color: var(--color--black);

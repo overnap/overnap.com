@@ -1,10 +1,10 @@
-import styled from "@emotion/styled"
-import { graphql } from "gatsby"
-import React from "react"
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
-import Title from "../components/Title"
-import { AboutQuery } from "../graphqlTypes"
+import styled from '@emotion/styled'
+import { graphql } from 'gatsby'
+import React from 'react'
+import Layout from '../components/Layout'
+import SEO from '../components/SEO'
+import Title from '../components/Title'
+import { AboutQuery } from '../graphqlTypes'
 
 const Section = styled.section`
   margin: 2em 0;

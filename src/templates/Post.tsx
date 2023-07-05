@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/Layout"
-import { PostTemplateQuery } from "../graphqlTypes"
-import SEO from "../components/SEO"
-import styled from "@emotion/styled"
-import Tag from "../components/Tag"
-import TOC from "../components/TOC"
-import Utterances from "../components/Utterances"
-import "katex/dist/katex.min.css"
+import React, { useEffect, useState } from 'react'
+import { Link, graphql } from 'gatsby'
+import Layout from '../components/Layout'
+import { PostTemplateQuery } from '../graphqlTypes'
+import SEO from '../components/SEO'
+import styled from '@emotion/styled'
+import Tag from '../components/Tag'
+import TOC from '../components/TOC'
+import Utterances from '../components/Utterances'
+import 'katex/dist/katex.min.css'
 
 const Title = styled.h1`
   font-size: 2.75rem;
@@ -77,23 +77,22 @@ interface Props {
 const PostTemplate = ({ data }: Props) => {
   const post = data.markdownRemark!
   const { previous, next } = data
-  const [currentHeader, setCurrentHeader] = useState("")
+  const [currentHeader, setCurrentHeader] = useState('')
 
   if (!post) {
     return <div>ERROR!</div>
   }
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const headerElems = document.querySelectorAll<HTMLAnchorElement>(
-        "a.anchor"
-      )
+    if (typeof window !== 'undefined') {
+      const headerElems =
+        document.querySelectorAll<HTMLAnchorElement>('a.anchor')
       if (headerElems.length === 0) {
         return
       }
 
       window.onscroll = () => {
-        let memoizedHeader = ""
+        let memoizedHeader = ''
         const offset = 120
 
         // To highlight the header in TOC
@@ -112,15 +111,13 @@ const PostTemplate = ({ data }: Props) => {
           }
         }
 
-        setCurrentHeader(memoizedHeader.split("/").pop() || "")
+        setCurrentHeader(memoizedHeader.split('/').pop() || '')
       }
 
       return () => {
         window.onscroll = null
       }
     }
-
-    return () => {}
   }, [])
 
   return (
@@ -172,7 +169,7 @@ const PostTemplate = ({ data }: Props) => {
             <div />
           )}
         </PostNav>
-        <Utterances theme={"github-light"} />
+        <Utterances theme={'github-light'} />
       </Layout>
     </>
   )
