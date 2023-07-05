@@ -1,18 +1,15 @@
 import styled from '@emotion/styled'
-import { graphql, useStaticQuery } from 'gatsby'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import { FooterQuery } from '../graphqlTypes'
 
 const StyledFooter = styled.footer`
-  margin: 2.5em auto 0.9em;
-  max-width: 800px;
+  margin: 4rem 1rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
 
-const Text = styled.span`
-  color: var(--color-gray);
-  font-size: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
   user-select: none;
 `
 
@@ -34,10 +31,10 @@ const Footer = () => {
 
   return (
     <StyledFooter>
-      <Text>
-        © {data.site!.buildTime!} by {data.site!.siteMetadata!.author!}
-      </Text>
-      <Text>Powered by Gatsby.js</Text>
+      <span>
+        {data.site!.buildTime!} © {data.site!.siteMetadata!.author!}
+      </span>
+      <Link to="RSS">RSS</Link>
     </StyledFooter>
   )
 }

@@ -2,14 +2,14 @@ import { css, Global } from '@emotion/react'
 
 const reset = css`
   html {
-    font-family: 'Noto Sans KR';
-    font-size: 17px;
+    font-family: 'Inter', 'Noto Sans KR';
+    font-size: 16px;
     font-weight: 400;
-    line-height: 1.7;
+    line-height: 1.5;
     height: 100%;
 
     --color-white: #f0f2f3;
-    --color-black: #2c2f33;
+    --color-black: #000000;
     --color-gray: #53565c;
     --color-weak: #687d87;
     --color-active: #4a5b69;
@@ -24,7 +24,6 @@ const reset = css`
   #___gatsby,
   #gatsby-focus-wrapper {
     margin: 0;
-    min-height: calc(100vh - 0.9em);
   }
 
   body {
@@ -37,14 +36,14 @@ const reset = css`
   }
 
   a {
-    color: var(--color-weak);
-    text-decoration: none;
-    transition: color 0.25s;
+    color: var(--color-black);
+    text-decoration: underline;
+    // transition: color 0.25s;
   }
 
-  a:hover {
-    color: var(--color-active);
-  }
+  // a:hover {
+  //   color: var(--color-active);
+  // }
 
   a:active,
   a:focus {

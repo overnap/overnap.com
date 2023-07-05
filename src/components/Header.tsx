@@ -1,46 +1,33 @@
 import styled from '@emotion/styled'
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql, Link, useStaticQuery, navigate } from 'gatsby'
 import { HeaderQuery } from '../graphqlTypes'
 
 const StyledHeader = styled.header`
-  margin: 0.9em auto 0.9em;
-  max-width: 800px;
+  margin: 1.5rem 1rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  a {
-    color: var(--color-black);
-    user-select: none;
-  }
-
-  a:hover {
-    color: var(--color-black);
-  }
 `
 
-const Title = styled(Link)`
-  font-size: 1.5rem;
+const StyledLink = styled(Link)`
+  font-size: 5rem;
   font-weight: 700;
+  text-decoration: none;
   display: inherit;
+  color: var(--color-black);
+  user-select: none;
 `
 
-const Page = styled(Link)`
-  font-size: 1.25rem;
-  margin-right: 1.25em;
-`
+interface Props {
+  previousPath?: string
+}
 
-const Github = styled.a`
-  font-size: 1.25rem;
-`
-
-const Header = () => {
+const Header = ({ previousPath }: Props) => {
   const data = useStaticQuery<HeaderQuery>(graphql`
     query header {
       site {
         siteMetadata {
           title
-          github
         }
       }
     }
@@ -52,18 +39,8 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <Title to="/">{data.site!.siteMetadata!.title}</Title>
-      <div>
-        <Page to="/about">About</Page>
-        <Page to="/blog/1">Blog</Page>
-        <Github
-          href={'https://github.com/' + data.site!.siteMetadata!.github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Github
-        </Github>
-      </div>
+      <StyledLink to="/">{data.site!.siteMetadata!.title}</StyledLink>
+      <StyledLink to={previousPath ?? "/"}>&lt;-</StyledLink>
     </StyledHeader>
   )
 }

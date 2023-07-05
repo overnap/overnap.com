@@ -6,13 +6,13 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'OVERNAP',
-    author: 'Overnap',
-    github: 'Overnap',
+    title: 'SEUNGHWAN KIM',
+    author: 'Seunghwan Kim',
+    github: 'overnap',
     email: 'overnapworks@gmail.com',
     description: 'a dev blog of overnap',
     siteUrl: 'https://overnap.com',
-    repository: 'Overnap/overnap.com', // for utterances
+    repository: 'overnap/overnap.com', // for utterances
   },
   plugins: [
     {
@@ -26,13 +26,6 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: 'blog',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/essential`,
-        name: 'essential',
       },
     },
     'gatsby-plugin-sharp',
