@@ -14,6 +14,10 @@ const BlogNav = styled.nav`
   align-items: center;
 
   a {
+    font-size: 4.5rem;
+    font-weight: 700;
+    display: block;
+    user-select: none;
     text-decoration: none;
   }
 `
@@ -40,7 +44,7 @@ const BlogTemplate = ({ pageContext }: Props) => {
       <SEO title={title} />
       <Layout>
         {posts.map(post => (
-          <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
+          <Preview post={post} />
         ))}
         <BlogNav>
           {pageIndex > 1 ? (

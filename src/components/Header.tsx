@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { graphql, Link, useStaticQuery, navigate } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import { HeaderQuery } from '../graphqlTypes'
 
 const StyledHeader = styled.header`
@@ -14,7 +14,6 @@ const StyledLink = styled(Link)`
   font-weight: 700;
   text-decoration: none;
   display: inherit;
-  color: var(--color-black);
   user-select: none;
 `
 
@@ -39,8 +38,8 @@ const Header = ({ previousPath }: Props) => {
 
   return (
     <StyledHeader>
-      <StyledLink to="/">{data.site!.siteMetadata!.title}</StyledLink>
-      <StyledLink to={previousPath ?? "/"}>&lt;-</StyledLink>
+      <StyledLink to="/">{data.site.siteMetadata.title}</StyledLink>
+      <StyledLink to={previousPath ?? '/'}>&lt;-</StyledLink>
     </StyledHeader>
   )
 }

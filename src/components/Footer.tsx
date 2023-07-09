@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <span>
-        {data.site!.buildTime!} © {data.site!.siteMetadata!.author!}
+        {data.site.buildTime} © {data.site.siteMetadata.author.toUpperCase()}
       </span>
       <Link to="RSS">RSS</Link>
     </StyledFooter>

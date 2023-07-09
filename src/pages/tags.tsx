@@ -4,13 +4,33 @@ import React from 'react'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import Tag from '../components/Tag'
-import Title from '../components/Title'
 import { TagsQuery } from '../graphqlTypes'
 
 const Line = styled.div`
-  margin: 11px 0px;
+  margin: 0.15em auto;
   display: flex;
   align-items: center;
+  gap: 0 0.75rem;
+  user-select: none;
+
+  a {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+
+  span {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 900px) {
+    a {
+      font-size: 3.75rem;
+      text-align: right;
+    }
+
+    flex-direction: row-reverse;
+  }
 `
 interface Props {
   data: TagsQuery
@@ -31,10 +51,11 @@ const Tags = ({ data }: Props) => {
     <>
       <SEO title="Tags" />
       <Layout>
-        <Title>Tags</Title>
         {groups.map(tag => (
           <Line>
-            <Tag tag={tag.fieldValue!} />- {tag.totalCount} posts
+            <Tag tag={tag.fieldValue!} />
+            <span> - </span>
+            <span>{tag.totalCount} posts</span>
           </Line>
         ))}
       </Layout>

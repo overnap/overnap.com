@@ -5,37 +5,33 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   line-height: 1.5;
-  max-width: 260px;
 `
 
 const Title = styled.div`
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.25rem;
-  margin: 0 0 8px 10px;
   user-select: none;
 `
 
 const Contents = styled.div<{ currentHeader: string }>`
   ul {
-    padding: 0;
-    margin: 0 0 0 12px;
+    padding-inline-start: 1rem;
+    margin: 0;
     list-style: none;
   }
 
   p {
-    margin: 0;
+    margin: 0.5rem 0;
   }
 
   a {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    text-decoration: none;
     user-select: none;
-    transition: color 0.15s, font-size 0.15s, font-weight 0.15s;
   }
 
   a[href='${props => props.currentHeader}'] {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--color--black);
+    font-weight: 600;
   }
 `
 

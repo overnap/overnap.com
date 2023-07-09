@@ -16,7 +16,7 @@ const reset = css`
     --color-dark: #373f4d;
 
     @media screen and (max-width: 900px) {
-      font-size: 15px;
+      font-size: 13px;
     }
   }
 

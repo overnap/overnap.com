@@ -1,23 +1,18 @@
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { BlogQuery } from '../graphqlTypes'
-import Tag from './Tag'
-
-const Container = styled.div`
-  padding: 25px 3px;
-`
 
 const Title = styled(Link)`
-  font-weight: 600;
-  font-size: 1.75rem;
-  color: var(--color-black);
+  margin: 0.15em 0;
+  font-size: 4rem;
+  font-weight: 700;
   display: block;
-`
+  user-select: none;
 
-const Time = styled.div`
-  font-size: 1rem;
-  color: var(--color-gray);
-  margin: 0 0 6px;
+  @media screen and (max-width: 900px) {
+    font-size: 3.75rem;
+    text-align: right;
+  }
 `
 
 type UnArray<T extends any[]> = T extends (infer U)[] ? U : never
@@ -27,17 +22,7 @@ interface Props {
 }
 
 const Preview = ({ post }: Props) => {
-  return (
-    <Container>
-      <Title to={`${post.fields.slug}`}>{post.frontmatter.title}</Title>
-      <Time>
-        {post.frontmatter.date} — {post.timeToRead} min read
-      </Time>
-      {post.frontmatter.tags.map(tag => (
-        <Tag key={tag} tag={tag} />
-      ))}
-    </Container>
-  )
+  return <Title to={`${post.fields.slug}`}>{post.frontmatter.title}</Title>
 }
 
 export default Preview

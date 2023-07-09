@@ -10,8 +10,8 @@ import Utterances from '../components/Utterances'
 import 'katex/dist/katex.min.css'
 
 const Title = styled.h1`
-  font-size: 2.75rem;
-  margin: 3.75rem 0 0;
+  font-size: 3.25rem;
+  margin: 5rem 0 0;
 `
 
 const Description = styled.div`
@@ -21,27 +21,42 @@ const Description = styled.div`
   display: block;
 `
 
-const Time = styled.div`
-  margin: 0.5rem 0 1.25rem;
+const FrontMatter = styled.div`
   * {
-    font-size: 1rem;
-    color: var(--color-gray);
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+`
+
+const TagDetails = styled.details`
+  font-size: 1.5rem;
+  font-weight: 700;
+  user-select: none;
+  text-align: right;
+
+  a {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 `
 
 const TOCAnchor = styled.div`
-  display: none;
+  margin: 3rem 0 0;
+  display: block;
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1400px) {
+    margin: 0;
     display: block;
     position: fixed;
-    top: 10em;
-    left: calc(50vw - 625px);
+    top: 15rem;
+    left: calc(50vw - 700px);
+    max-width: 280px;
   }
 `
 
 const Section = styled.section`
-  margin: 4.75rem 0;
+  margin: 4rem 0;
   font-size: 17px;
 
   img {
@@ -55,13 +70,17 @@ const Section = styled.section`
 `
 
 const PostNav = styled.nav`
-  margin: 1.5rem 0 3rem;
+  margin: 3rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   a {
-    color: var(--color-black);
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+    user-select: none;
+    text-decoration: none;
   }
 `
 
@@ -127,32 +146,35 @@ const PostTemplate = ({ data }: Props) => {
         description={post.frontmatter.description || post.excerpt || undefined}
       />
       <Layout>
-        <TOCAnchor>
-          <TOC
-            html={data.markdownRemark!.tableOfContents!}
-            currentHeader={currentHeader}
-          />
-        </TOCAnchor>
         <Article itemScope itemType="http://schema.org/Article">
           <header>
             <Title itemProp="headline">{post.frontmatter.title}</Title>
             {post.frontmatter.description && (
               <Description>{post.frontmatter.description}</Description>
             )}
-            <Time>
+            <FrontMatter>
+              <span>— </span>
               <time>{post.frontmatter.date}</time>
-              <span> — </span>
-              <span>{post.timeToRead} min read</span>
-            </Time>
-            {post.frontmatter.tags.map(tag => (
-              <Tag key={tag} tag={tag} />
-            ))}
+            </FrontMatter>
+            <TagDetails>
+              <summary>TAGS</summary>
+              {post.frontmatter.tags.map(tag => (
+                <Tag key={tag} tag={tag} />
+              ))}
+            </TagDetails>
           </header>
+          <TOCAnchor>
+            <TOC
+              html={data.markdownRemark!.tableOfContents!}
+              currentHeader={currentHeader}
+            />
+          </TOCAnchor>
           <Section
             dangerouslySetInnerHTML={{ __html: post.html! }}
             itemProp="articleBody"
           />
         </Article>
+        <Utterances theme={'github-light'} />
         <PostNav>
           {previous ? (
             <Link to={previous.fields.slug} rel="prev">
@@ -169,7 +191,6 @@ const PostTemplate = ({ data }: Props) => {
             <div />
           )}
         </PostNav>
-        <Utterances theme={'github-light'} />
       </Layout>
     </>
   )
@@ -188,7 +209,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY-MM-DD")
         tags
       }
     }
