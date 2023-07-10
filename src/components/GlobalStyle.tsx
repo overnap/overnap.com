@@ -18,6 +18,10 @@ const reset = css`
     @media screen and (max-width: 900px) {
       font-size: 13px;
     }
+
+    @media screen and (max-width: 600px) {
+      font-size: 10px;
+    }
   }
 
   body,

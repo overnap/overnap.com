@@ -10,7 +10,7 @@ const Title = styled(Link)`
   user-select: none;
 
   @media screen and (max-width: 900px) {
-    font-size: 3.75rem;
+    font-size: 2.5rem;
     text-align: right;
   }
 `

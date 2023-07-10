@@ -20,6 +20,18 @@ const BlogNav = styled.nav`
     user-select: none;
     text-decoration: none;
   }
+
+  @media screen and (max-width: 900px) {
+    a {
+      font-size: 3.75rem;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    a {
+      font-size: 3rem;
+    }
+  }
 `
 
 interface Props {

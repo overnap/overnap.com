@@ -14,7 +14,7 @@ const Menu = styled(Link)`
   user-select: none;
 
   @media screen and (max-width: 900px) {
-    font-size: 4rem;
+    font-size: 3.5rem;
     text-align: right;
   }
 `

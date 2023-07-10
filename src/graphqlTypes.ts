@@ -2212,9 +2212,7 @@ export type TagsQuery = { __typename?: 'Query', allMarkdownRemark: { __typename?
 
 export type PostTemplateQueryVariables = Exact<{
   id: Scalars['String']['input'];
-  prevPostId?: InputMaybe<Scalars['String']['input']>;
-  nextPostId?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type PostTemplateQuery = { __typename?: 'Query', markdownRemark?: { __typename?: 'MarkdownRemark', id: string, excerpt?: string | null, html?: string | null, timeToRead?: number | null, tableOfContents?: string | null, frontmatter: { __typename?: 'Frontmatter', title: string, description?: string | null, date: any, tags: Array<string> } } | null, previous?: { __typename?: 'MarkdownRemark', fields: { __typename?: 'Fields', slug: string }, frontmatter: { __typename?: 'Frontmatter', title: string } } | null, next?: { __typename?: 'MarkdownRemark', fields: { __typename?: 'Fields', slug: string }, frontmatter: { __typename?: 'Frontmatter', title: string } } | null };
+export type PostTemplateQuery = { __typename?: 'Query', markdownRemark?: { __typename?: 'MarkdownRemark', id: string, excerpt?: string | null, html?: string | null, timeToRead?: number | null, tableOfContents?: string | null, frontmatter: { __typename?: 'Frontmatter', title: string, description?: string | null, date: any, tags: Array<string> } } | null };

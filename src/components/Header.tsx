@@ -15,6 +15,14 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   display: inherit;
   user-select: none;
+
+  @media screen and (max-width: 900px) {
+    font-size: 4rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 3rem;
+  }
 `
 
 interface Props {

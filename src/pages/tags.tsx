@@ -25,8 +25,12 @@ const Line = styled.div`
 
   @media screen and (max-width: 900px) {
     a {
-      font-size: 3.75rem;
+      font-size: 2.5rem;
       text-align: right;
+    }
+
+    span {
+      font-size: 1.75rem;
     }
 
     flex-direction: row-reverse;

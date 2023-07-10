@@ -29,15 +29,13 @@ const FrontMatter = styled.div`
 `
 
 const TagDetails = styled.details`
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   user-select: none;
   text-align: right;
 
   a {
     display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
   }
 `
 
@@ -69,21 +67,6 @@ const Section = styled.section`
   }
 `
 
-const PostNav = styled.nav`
-  margin: 3rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  a {
-    font-size: 2.5rem;
-    font-weight: 700;
-    display: block;
-    user-select: none;
-    text-decoration: none;
-  }
-`
-
 const Article = styled.article`
   max-width: 680px;
   margin: auto;
@@ -95,7 +78,6 @@ interface Props {
 
 const PostTemplate = ({ data }: Props) => {
   const post = data.markdownRemark!
-  const { previous, next } = data
   const [currentHeader, setCurrentHeader] = useState('')
 
   if (!post) {
@@ -175,22 +157,6 @@ const PostTemplate = ({ data }: Props) => {
           />
         </Article>
         <Utterances theme={'github-light'} />
-        <PostNav>
-          {previous ? (
-            <Link to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          ) : (
-            <div />
-          )}
-          {next ? (
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          ) : (
-            <div />
-          )}
-        </PostNav>
       </Layout>
     </>
   )
@@ -199,7 +165,7 @@ const PostTemplate = ({ data }: Props) => {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query postTemplate($id: String!, $prevPostId: String, $nextPostId: String) {
+  query postTemplate($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
@@ -211,22 +177,6 @@ export const pageQuery = graphql`
         description
         date(formatString: "YYYY-MM-DD")
         tags
-      }
-    }
-    previous: markdownRemark(id: { eq: $prevPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
       }
     }
   }

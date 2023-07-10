@@ -4,12 +4,11 @@ import styled from '@emotion/styled'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  line-height: 1.5;
 `
 
 const Title = styled.div`
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   user-select: none;
 `
 
@@ -25,7 +24,7 @@ const Contents = styled.div<{ currentHeader: string }>`
   }
 
   a {
-    font-size: 1rem;
+    font-size: 17px;
     text-decoration: none;
     user-select: none;
   }
