@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import { BlogQuery } from '../graphqlTypes'
 
 const Title = styled(Link)`
-  margin: 0.15em 0;
+  padding: 0.15rem 0;
   font-size: 4rem;
   font-weight: 700;
   display: block;

@@ -5,7 +5,10 @@ import GlobalStyle from './GlobalStyle'
 import Header from './Header'
 
 const Main = styled.div`
-  margin: 0rem 1rem;
+  padding: 0rem 1rem;
+  height: auto;
+  min-height: calc(100% - 14.5rem);
+  padding-bottom: 7rem;
 `
 
 interface Props {

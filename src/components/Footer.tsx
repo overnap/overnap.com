@@ -3,7 +3,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 import { FooterQuery } from '../graphqlTypes'
 
 const StyledFooter = styled.footer`
-  margin: 4rem 1rem 1rem;
+  padding: 3rem 1rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,6 +11,10 @@ const StyledFooter = styled.footer`
   font-size: 2rem;
   font-weight: 700;
   user-select: none;
+
+  height: 3rem;
+  position: relative;
+  transform: translateY(-100%);
 `
 
 const Footer = () => {
