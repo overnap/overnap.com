@@ -16,11 +16,11 @@ interface Props {
   previousPath?: string
 }
 
-const Layout = ({ children, previousPath }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <>
       <GlobalStyle />
-      <Header previousPath={previousPath} />
+      <Header />
       <Main>{children}</Main>
       <Footer />
     </>

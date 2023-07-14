@@ -11,7 +11,7 @@ interface Props {
   title: string
 }
 
-const SEO = ({ description, lang = 'ko', meta = [], title }: Props) => {
+const SEO = ({ description, lang = 'en', meta = [], title }: Props) => {
   const data = useStaticQuery<SeoQuery>(graphql`
     query seo {
       site {
@@ -55,14 +55,14 @@ const SEO = ({ description, lang = 'ko', meta = [], title }: Props) => {
       <link
         rel="preload"
         as="font"
-        href="/fonts/iAWriterMonoS-Bold.woff2"
+        href="/fonts/iAWriterMonoSBold.woff2"
         type="font/woff2"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
         as="font"
-        href="/fonts/iAWriterMonoS-Regular.woff2"
+        href="/fonts/iAWriterMonoSRegular.woff2"
         type="font/woff2"
         crossOrigin="anonymous"
       />

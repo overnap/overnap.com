@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql, Link, navigate, useStaticQuery } from 'gatsby'
 import { HeaderQuery } from '../graphqlTypes'
+import { css } from '@emotion/react'
 
 const StyledHeader = styled.header`
   padding: 1.5rem 1rem 1rem;
@@ -10,7 +11,7 @@ const StyledHeader = styled.header`
   height: 5rem;
 `
 
-const StyledLink = styled(Link)`
+const textStyle = css`
   font-size: 5rem;
   font-weight: 700;
   text-decoration: none;
@@ -26,11 +27,15 @@ const StyledLink = styled(Link)`
   }
 `
 
-interface Props {
-  previousPath?: string
-}
+const HomeLink = styled(Link)`
+  ${textStyle}
+`
 
-const Header = ({ previousPath }: Props) => {
+const PreviousPage = styled.div`
+  ${textStyle}
+`
+
+const Header = () => {
   const data = useStaticQuery<HeaderQuery>(graphql`
     query header {
       site {
@@ -47,8 +52,14 @@ const Header = ({ previousPath }: Props) => {
 
   return (
     <StyledHeader>
-      <StyledLink to="/">{data.site.siteMetadata.title}</StyledLink>
-      <StyledLink to={previousPath ?? '/'}>←</StyledLink>
+      <HomeLink to="/">{data.site.siteMetadata.title}</HomeLink>
+      <PreviousPage
+        onClick={() => {
+          navigate(-1).catch(err => console.log(err))
+        }}
+      >
+        ←
+      </PreviousPage>
     </StyledHeader>
   )
 }
