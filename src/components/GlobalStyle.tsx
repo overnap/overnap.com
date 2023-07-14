@@ -2,7 +2,7 @@ import { css, Global } from '@emotion/react'
 
 const reset = css`
   html {
-    font-family: 'Inter', 'Noto Sans KR';
+    font-family: 'iA Writer Mono', 'Noto Sans KR', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
@@ -28,6 +28,7 @@ const reset = css`
   #___gatsby,
   #gatsby-focus-wrapper {
     margin: 0;
+    height: 100%;
   }
 
   body {
@@ -75,7 +76,7 @@ const reset = css`
   h4,
   h5,
   h6 {
-    font-weight: 500;
+    font-weight: 400;
   }
 
   h1 {

@@ -16,7 +16,7 @@ const Title = styled.h1`
 
 const Description = styled.div`
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0;
   display: block;
 `
