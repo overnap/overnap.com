@@ -13,8 +13,7 @@ const StyledFooter = styled.footer`
   user-select: none;
 
   height: 3rem;
-  position: relative;
-  transform: translateY(-100%);
+  margin: -7rem 0 0 0;
 `
 
 const Footer = () => {
