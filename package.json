@@ -1,7 +1,7 @@
 {
   "name": "overnap.com",
   "private": true,
-  "description": "simple blog for personal use powered by gatsby",
+  "description": "personal website of overnap",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
