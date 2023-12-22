@@ -30,7 +30,14 @@ module.exports = {
     },
     'gatsby-plugin-sharp',
     'gatsby-plugin-emotion',
-    'gatsby-plugin-netlify',
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        headers: {
+          '/*.(woff|woff2)': ['Cache-Control: public, max-age=31536000'],
+        },
+      },
+    },
     'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-plugin-feed`,
