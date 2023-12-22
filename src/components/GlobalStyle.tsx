@@ -2,7 +2,7 @@ import { css, Global } from '@emotion/react'
 
 const reset = css`
   html {
-    font-family: 'iA Writer Mono', 'Noto Sans KR', sans-serif;
+    font-family: 'iA Writer Mono', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;

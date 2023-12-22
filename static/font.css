@@ -3,7 +3,8 @@
   font-weight: 700;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/iAWriterMonoSBold.woff2') format('woff2'),
+  src: local('iA Writer Mono'), local('iA-Writer-Mono'),
+    url('/fonts/iAWriterMonoSBold.woff2') format('woff2'),
     url('/fonts/iAWriterMonoSBold.woff') format('woff');
 }
 
@@ -21,8 +22,9 @@
   font-weight: 400;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/iAWriterMonoSRegular.woff2') format('woff2'),
-    url('/fonts/iAWriterMonoSRegular.woff') format('woff');
+  src: local('iA Writer Mono'), local('iA-Writer-Mono'),
+    url('/fonts/iAWriterMonoSBold.woff2') format('woff2'),
+    url('/fonts/iAWriterMonoSBold.woff') format('woff');
 }
 
 /* @font-face {
