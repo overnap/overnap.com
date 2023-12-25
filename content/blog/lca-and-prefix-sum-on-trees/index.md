@@ -8,6 +8,8 @@ published: true
 
 Prefix Sum은 고난도 문제에서 예상치 못한 쓰임새로 뒤통수를 치곤 한다. 트리 위에서 Prefix Sum을 사용하는 유형에 대해 알아보자.
 
+​	
+
 [BOJ 12746 Traffic (Large)](https://www.acmicpc.net/problem/12746)
 
 트리 위 두 노드 사이의 최단 거리 간선에 값을 누적하는 쿼리 문제이다.
@@ -20,9 +22,13 @@ Prefix Sum은 고난도 문제에서 예상치 못한 쓰임새로 뒤통수를 
 
 사실 전형적인 오일러 투어 테크닉에서 세그먼트 트리를 누적합으로 바꾼 거다. 따라서 실시간으로 풀고 싶다면 ETT로 쿼리당 $O(\log{N})$에 가능하다.
 
+​	
+
 [BOJ 11960 Max Flow](https://www.acmicpc.net/problem/11960)
 
 간선이 아닌 노드에 쿼리한다. 끝점을 처리하는 방법을 조금 바꾸어 보자.
+
+​	
 
 [BOJ 24889 통행량 조사](https://www.acmicpc.net/problem/24889)
 
