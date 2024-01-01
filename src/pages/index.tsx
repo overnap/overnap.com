@@ -23,14 +23,41 @@ interface Props {
   data: HomeQuery
 }
 
+interface EssentialWebSiteSchema {
+  '@context': 'https://schema.org'
+  '@type': 'WebSite'
+  name: string
+  alternateName?: string | string[]
+  url: string
+}
+
 const Home = ({ data }: Props) => {
-  if (!data.site?.siteMetadata?.github || !data.site?.siteMetadata?.email) {
+  if (
+    !data.site?.siteMetadata?.github ||
+    !data.site?.siteMetadata?.email ||
+    !data.site?.siteMetadata?.title ||
+    !data.site?.siteMetadata?.siteUrl
+  ) {
     return <div>Error!</div>
+  }
+
+  const structuredWebSiteData: EssentialWebSiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: data.site.siteMetadata.title,
+    alternateName: data.site.siteMetadata.alternateTitle as
+      | string
+      | string[]
+      | undefined,
+    url: data.site.siteMetadata.siteUrl,
   }
 
   return (
     <>
-      <SEO title="Home" />
+      <SEO title={data.site.siteMetadata.title} lang="en" />
+      <script type="application/ld+json">
+        {JSON.stringify(structuredWebSiteData)}
+      </script>
       <Layout>
         <Menu to="/resume.pdf">ABOUT</Menu>
         <Menu to={'https://github.com/' + data.site.siteMetadata.github}>
@@ -50,8 +77,11 @@ export const pageQuery = graphql`
   query home {
     site {
       siteMetadata {
+        title
+        alternateTitle
         github
         email
+        siteUrl
       }
     }
   }

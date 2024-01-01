@@ -52,7 +52,7 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <HomeLink to="/">{data.site.siteMetadata.title}</HomeLink>
+      <HomeLink to="/">{data.site.siteMetadata.title.toUpperCase()}</HomeLink>
       <PreviousPage
         onClick={() => {
           navigate(-1).catch(err => console.log(err))

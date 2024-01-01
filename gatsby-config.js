@@ -6,7 +6,8 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'SEUNGHWAN KIM',
+    title: 'Seunghwan Kim',
+    alternateTitle: ['SHK', 'overnap'],
     author: 'Seunghwan Kim',
     github: 'overnap',
     email: 'overnapworks@gmail.com',

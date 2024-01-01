@@ -11,7 +11,7 @@ interface Props {
   title: string
 }
 
-const SEO = ({ description, lang = 'en', meta = [], title }: Props) => {
+const SEO = ({ description, lang = 'ko', meta = [], title }: Props) => {
   const data = useStaticQuery<SeoQuery>(graphql`
     query seo {
       site {
@@ -25,7 +25,7 @@ const SEO = ({ description, lang = 'en', meta = [], title }: Props) => {
 
   const metaDescription =
     description || data.site?.siteMetadata?.description || ''
-  const defaultTitle = data.site?.siteMetadata?.title || undefined
+  // const defaultTitle = data.site?.siteMetadata?.title || undefined
   const defaultMeta: Array<Metadata> = [
     {
       name: 'description',
@@ -49,20 +49,21 @@ const SEO = ({ description, lang = 'en', meta = [], title }: Props) => {
     <Helmet
       htmlAttributes={{ lang }}
       title={title}
-      titleTemplate={defaultTitle ? `%s - ${defaultTitle}` : undefined}
+      // temporary remove; the name is too long!
+      // titleTemplate={defaultTitle ? `%s - ${defaultTitle}` : undefined}
       meta={defaultMeta.concat(meta)}
     >
       <link
         rel="preload"
         as="font"
-        href="/fonts/iAWriterMonoSBold.woff2"
+        href="/fonts/Pretendard-Bold.woff2"
         type="font/woff2"
         crossOrigin="anonymous"
       />
       <link
         rel="preload"
         as="font"
-        href="/fonts/iAWriterMonoSRegular.woff2"
+        href="/fonts/Pretendard-Regular.woff2"
         type="font/woff2"
         crossOrigin="anonymous"
       />

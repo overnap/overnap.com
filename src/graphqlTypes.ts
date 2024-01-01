@@ -2096,6 +2096,7 @@ export type SitePluginSortInput = {
 
 export type SiteSiteMetadata = {
   __typename?: 'SiteSiteMetadata';
+  alternateTitle?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   author?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   email?: Maybe<Scalars['String']['output']>;
@@ -2106,6 +2107,7 @@ export type SiteSiteMetadata = {
 };
 
 export type SiteSiteMetadataFieldSelector = {
+  alternateTitle?: InputMaybe<FieldSelectorEnum>;
   author?: InputMaybe<FieldSelectorEnum>;
   description?: InputMaybe<FieldSelectorEnum>;
   email?: InputMaybe<FieldSelectorEnum>;
@@ -2116,6 +2118,7 @@ export type SiteSiteMetadataFieldSelector = {
 };
 
 export type SiteSiteMetadataFilterInput = {
+  alternateTitle?: InputMaybe<StringQueryOperatorInput>;
   author?: InputMaybe<StringQueryOperatorInput>;
   description?: InputMaybe<StringQueryOperatorInput>;
   email?: InputMaybe<StringQueryOperatorInput>;
@@ -2126,6 +2129,7 @@ export type SiteSiteMetadataFilterInput = {
 };
 
 export type SiteSiteMetadataSortInput = {
+  alternateTitle?: InputMaybe<SortOrderEnum>;
   author?: InputMaybe<SortOrderEnum>;
   description?: InputMaybe<SortOrderEnum>;
   email?: InputMaybe<SortOrderEnum>;
@@ -2203,7 +2207,7 @@ export type TagQuery = { __typename?: 'Query', allMarkdownRemark: { __typename?:
 export type HomeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomeQuery = { __typename?: 'Query', site?: { __typename?: 'Site', siteMetadata?: { __typename?: 'SiteSiteMetadata', github?: string | null, email?: string | null } | null } | null };
+export type HomeQuery = { __typename?: 'Query', site?: { __typename?: 'Site', siteMetadata?: { __typename?: 'SiteSiteMetadata', title?: string | null, alternateTitle?: Array<string | null> | null, github?: string | null, email?: string | null, siteUrl?: string | null } | null } | null };
 
 export type TagsQueryVariables = Exact<{ [key: string]: never; }>;
 
