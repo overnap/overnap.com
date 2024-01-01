@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
 import { SeoQuery } from '../graphqlTypes'
+import { WebSite, WithContext, BlogPosting } from 'schema-dts'
 
 type Metadata = ({ name: string } | { property: string }) & { content: string }
 
@@ -9,9 +10,10 @@ interface Props {
   lang?: string
   meta?: []
   title: string
+  schema?: WithContext<BlogPosting> | WithContext<WebSite>
 }
 
-const SEO = ({ description, lang = 'ko', meta = [], title }: Props) => {
+const SEO = ({ description, lang = 'ko', meta = [], title, schema }: Props) => {
   const data = useStaticQuery<SeoQuery>(graphql`
     query seo {
       site {
@@ -53,6 +55,9 @@ const SEO = ({ description, lang = 'ko', meta = [], title }: Props) => {
       // titleTemplate={defaultTitle ? `%s - ${defaultTitle}` : undefined}
       meta={defaultMeta.concat(meta)}
     >
+      {schema && (
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      )}
       <link
         rel="preload"
         as="font"

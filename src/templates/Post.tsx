@@ -126,6 +126,7 @@ const PostTemplate = ({ data }: Props) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt || undefined}
+        // TODO: add blogpost schema
       />
       <Layout>
         <Article itemScope itemType="http://schema.org/Article">

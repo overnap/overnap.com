@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { HomeQuery } from '../graphqlTypes'
 import styled from '@emotion/styled'
+import { WebSite, WithContext } from 'schema-dts'
 
 const Menu = styled(Link)`
   display: block;
@@ -23,14 +24,6 @@ interface Props {
   data: HomeQuery
 }
 
-interface EssentialWebSiteSchema {
-  '@context': 'https://schema.org'
-  '@type': 'WebSite'
-  name: string
-  alternateName?: string | string[]
-  url: string
-}
-
 const Home = ({ data }: Props) => {
   if (
     !data.site?.siteMetadata?.github ||
@@ -41,7 +34,7 @@ const Home = ({ data }: Props) => {
     return <div>Error!</div>
   }
 
-  const structuredWebSiteData: EssentialWebSiteSchema = {
+  const schema: WithContext<WebSite> = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: data.site.siteMetadata.title,
@@ -54,10 +47,7 @@ const Home = ({ data }: Props) => {
 
   return (
     <>
-      <SEO title={data.site.siteMetadata.title} lang="en" />
-      <script type="application/ld+json">
-        {JSON.stringify(structuredWebSiteData)}
-      </script>
+      <SEO title={data.site.siteMetadata.title} lang="en" schema={schema} />
       <Layout>
         <Menu to="/resume.pdf">ABOUT</Menu>
         <Menu to={'https://github.com/' + data.site.siteMetadata.github}>
