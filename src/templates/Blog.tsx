@@ -56,7 +56,7 @@ const BlogTemplate = ({ pageContext }: Props) => {
       <SEO title={title} />
       <Layout>
         {posts.map(post => (
-          <Preview post={post} />
+          <Preview post={post} key={post.fields.slug} />
         ))}
         <BlogNav>
           {pageIndex > 1 ? (
