@@ -1,12 +1,12 @@
 ---
-title: LCA와 트리 위의 Prefix Sum
+title: 트리 위의 누적합
 date: 2022-04-06
 tags:
   - algorithm
 published: true
 ---
 
-Prefix Sum은 고난도 문제에서 예상치 못한 쓰임새로 뒤통수를 치곤 한다. 트리 위에서 Prefix Sum을 사용하는 유형에 대해 알아보자.
+누적합 (prefix sum) 은 고난도 문제에서 예상치 못한 쓰임새로 뒤통수를 치곤 한다. 트리 위에서 누적합을 사용하는 유형에 대해 알아보자.
 
 ​	
 
@@ -14,7 +14,7 @@ Prefix Sum은 고난도 문제에서 예상치 못한 쓰임새로 뒤통수를 
 
 트리 위 두 노드 사이의 최단 거리 간선에 값을 누적하는 쿼리 문제이다.
 
-쿼리는 오프라인으로 처리해도 괜찮다. 그러면 Lowest Common Ancestor와 Prefix Sum을 활용해서 간단하게 처리할 수 있다.
+쿼리는 오프라인으로 처리해도 괜찮다. 그러면 LCA (Lowest Common Ancestor) 와 누적합을 활용해서 간단하게 처리할 수 있다.
 
 쿼리할 노드 $u$, $v$와 두 노드의 LCA $t$를 생각하자. $psum[u]$와 $psum[v]$에 1을 더하고 $psum[t]$에 2를 뺀다. 이렇게 모든 쿼리를 처리한 후 부모 방향으로 propagate한다. 그러면 $psum[x]$를 $x$와 그 부모 사이 간선의 값이라고 볼 때, $u \rightarrow t$와 $v \rightarrow t$ 사이 간선에만 영향을 줄 것이다.
 
