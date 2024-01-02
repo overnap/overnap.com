@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { PostTemplateQuery } from '../graphqlTypes'
 import SEO from '../components/SEO'
 import styled from '@emotion/styled'
 import Tag from '../components/Tag'
 import TOC from '../components/TOC'
-import Utterances from '../components/Utterances'
 import 'katex/dist/katex.min.css'
 
 const Title = styled.h1`
@@ -157,8 +156,26 @@ const PostTemplate = ({ data }: Props) => {
             itemProp="articleBody"
           />
         </Article>
-        <Utterances theme={'github-light'} />
+        <script
+          src="https://giscus.app/client.js"
+          data-repo="overnap/overnap.com"
+          data-repo-id="R_kgDOGuL2cw"
+          data-category="Comments"
+          data-category-id="DIC_kwDOGuL2c84CcHs6"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="en"
+          data-loading="lazy"
+          cross-origin="anonymous"
+          async
+        ></script>
+        <div className="giscus"></div>
       </Layout>
+      {/* from giscus.app script gen */}
     </>
   )
 }
