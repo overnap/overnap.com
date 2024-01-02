@@ -7,6 +7,7 @@ import styled from '@emotion/styled'
 import Tag from '../components/Tag'
 import TOC from '../components/TOC'
 import 'katex/dist/katex.min.css'
+import Giscus from '../components/Giscus'
 
 const Title = styled.h1`
   font-size: 3.25rem;
@@ -155,27 +156,9 @@ const PostTemplate = ({ data }: Props) => {
             dangerouslySetInnerHTML={{ __html: post.html! }}
             itemProp="articleBody"
           />
+          <Giscus />
         </Article>
-        <script
-          src="https://giscus.app/client.js"
-          data-repo="overnap/overnap.com"
-          data-repo-id="R_kgDOGuL2cw"
-          data-category="Comments"
-          data-category-id="DIC_kwDOGuL2c84CcHs6"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="light"
-          data-lang="en"
-          data-loading="lazy"
-          cross-origin="anonymous"
-          async
-        ></script>
-        <div className="giscus"></div>
       </Layout>
-      {/* from giscus.app script gen */}
     </>
   )
 }

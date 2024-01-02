@@ -2184,11 +2184,6 @@ export type SeoQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type SeoQuery = { __typename?: 'Query', site?: { __typename?: 'Site', siteMetadata?: { __typename?: 'SiteSiteMetadata', title?: string | null, description?: string | null } | null } | null };
 
-export type UtterancesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type UtterancesQuery = { __typename?: 'Query', site?: { __typename?: 'Site', siteMetadata?: { __typename?: 'SiteSiteMetadata', repository?: string | null } | null } | null };
-
 export type PostQueryVariables = Exact<{ [key: string]: never; }>;
 
 
