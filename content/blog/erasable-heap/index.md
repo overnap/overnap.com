@@ -32,7 +32,7 @@ while (!eraser.empty() && eraser.top() == pq.top())
 
 맞다. 근데 난 힙이 더 좋다.
 
-일단 힙은 매우 빠르다. `std::set`과 `std::priority_queue`는 모두 연산이 $O(\log{N})$이지만 보통 2배 이상의 시간 차이가 난다. `std::set`은 느리기로 유명하고 `std::priority_queue`는 빠르기로 유명하다.
+일단 힙은 매우 빠르다. `std::set`과 `std::priority_queue`는 모두 연산이 $O(\log{N})$이지만 보통 2배 이상의 시간 차이가 난다. `std::set`은 느리기로 유명하고 `std::priority_queue`는 빠르기로 유명하다. [BOJ 13513](https://www.acmicpc.net/problem/13513)을 풀어보자.
 
 그리고 간편하다. 솔직히 문제 풀이할 때 iterator하고 씨름하는 건 짜증 난다. `std::multiset` 쓸 생각 하면 벌써 답답하다.
 
