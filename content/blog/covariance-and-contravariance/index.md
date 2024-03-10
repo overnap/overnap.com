@@ -1,5 +1,5 @@
 ---
-title: 공변성(Covariance)과 반공변성(Contravariance)
+title: 공변성과 반공변성
 date: 2021-09-03
 tags:
   - category theory
@@ -11,7 +11,7 @@ published: true
 
 이 글에서는 covariance(공변성)과 contravariance(반공변성)에 대해 알아본다.
 
-
+​	
 
 ## Covariance
 
@@ -29,7 +29,7 @@ OOP에서 상속을 이야기할 때 흔히 쓰이는 예제가 있다. `Animal`
 >
 > `A` <: `B`일 때 `F<A>` <: `F<B>`를 만족하면 `F<T>`는 covariant다.
 
-
+​	
 
 C#의 `IEnumerable<T>`가 대표적인 예다. 열거 가능 인터페이스는 `IEnumerable<Derived>` <: `IEnumerable<Base>`를 만족한다. 아래 C# 코드에서 일어나는 암시적 변환을 보자.
 
@@ -61,7 +61,7 @@ IEnumerable<object> objects = strings; // ok
 
 subtype이 그대로 따라오는 covariant(공변하는)와 다르게 subtype 관계가 뒤집힌다. 그래서 contravariant(반공변하는, 반변하는)이다.
 
-
+​	
 
 C#의 `Action<T>`가 contravariant한 예이다. `Action<Base>` <: `Action<Dervied>`를 만족한다.
 
@@ -88,7 +88,7 @@ Action<string> actString = actObject; // ok
 >
 > `A`에 대해 contravariant하고 `B`에 대해 covariant하다.
 
-
+​	
 
 재미있는 점이 하나 있다. `T`에 대해 contravariant한 타입에 또 contravariant하다면 `T`에 대해 covariant하다는 사실이다. 즉 `Function<Function<A, void>, void>`는 `A`에 대해 covariant하다.
 
@@ -114,6 +114,8 @@ contravariant만 주의하면 된다. covariant는 중첩해도 covariant하다.
 
 배열에 쓰는 과정을 생각해보자. `Array<Cat>`에는 `Cat`만 넣을 수 있다. `Array<Animal>`은 어떤 `Animal`이든 모두 넣을 수 있다. `Array<Cat>`을 `Array<Animal>`로 취급하면, `Cat`이 아닌 다른 `Animal`을 넣는 일이 생긴다. `Array<Cat>`에 `Dog`을 넣을 수는 없다.
 
+​	
+
 C# 예제로 살펴보자. C#의 배열 타입은 covariant하다. 방금 문제가 생긴다고 하지 않았나? 실제로 문제를 발생 시켜 보자.
 
 ```cs
@@ -130,7 +132,7 @@ objects[0] = 0; // runtime error
 
 그러므로 `Array<T>`는 `T`에 대해 covariant하지도, contravariant하지도 않다. 즉 변하지 않는다. 이럴 때 invariant(불변하는)이라고 한다. `T`의 supertype도 안되고 subtype도 안된다. 정확히 `T`여야 한다.
 
-
+​	
 
 C#의 `IList<T>`는 invariant하다. 아래 예시는 컴파일 에러를 일으킨다.
 
@@ -153,7 +155,7 @@ IList<object> objects = strings; // compile error
 
 `T`가 전혀 쓰이지 않는다. `Const<Cat>` <: `Const<Animal>`인 동시에 `Const<Animal>` <: `Const<Cat>`이다. 그러므로 `T`에 대해 covariant하면서 contravariant하다.
 
-
+​	
 
 이번에는 타입스크립트 예제다.
 
