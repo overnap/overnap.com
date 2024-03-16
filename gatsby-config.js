@@ -30,7 +30,15 @@ module.exports = {
       },
     },
     'gatsby-plugin-sharp',
-    'gatsby-plugin-emotion',
+    {
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        sourceMap: true,
+        autoLabel: 'dev-only',
+        labelFormat: `[local]`,
+        cssPropOptimization: true,
+      },
+    },
     {
       resolve: 'gatsby-plugin-netlify',
       options: {
