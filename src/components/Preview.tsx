@@ -15,7 +15,7 @@ const Title = styled(Link)`
   }
 `
 
-type UnArray<T extends any[]> = T extends (infer U)[] ? U : never
+type UnArray<T extends unknown[]> = T extends (infer U)[] ? U : never
 
 interface Props {
   post: UnArray<BlogQuery['allMarkdownRemark']['nodes']>

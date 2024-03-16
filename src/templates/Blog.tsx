@@ -53,7 +53,6 @@ const BlogTemplate = ({ pageContext }: Props) => {
 
   return (
     <>
-      <SEO title={title} />
       <Layout>
         {posts.map(post => (
           <Preview post={post} key={post.fields.slug} />
@@ -80,3 +79,7 @@ const BlogTemplate = ({ pageContext }: Props) => {
 }
 
 export default BlogTemplate
+
+export const Head = ({ pageContext }: Props) => (
+  <SEO title={pageContext.title} />
+)

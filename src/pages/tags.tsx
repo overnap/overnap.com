@@ -53,7 +53,6 @@ const Tags = ({ data }: Props) => {
 
   return (
     <>
-      <SEO title="Tags" />
       <Layout>
         {groups.map(tag => (
           <Line>
@@ -68,6 +67,8 @@ const Tags = ({ data }: Props) => {
 }
 
 export default Tags
+
+export const Head = () => <SEO title="Tags" />
 
 export const pageQuery = graphql`
   query tags {

@@ -34,20 +34,8 @@ const Home = ({ data }: Props) => {
     return <div>Error!</div>
   }
 
-  const schema: WithContext<WebSite> = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: data.site.siteMetadata.title,
-    alternateName: data.site.siteMetadata.alternateTitle as
-      | string
-      | string[]
-      | undefined,
-    url: data.site.siteMetadata.siteUrl,
-  }
-
   return (
     <>
-      <SEO title={data.site.siteMetadata.title} lang="en" schema={schema} />
       <Layout>
         <Menu to="/resume.pdf">ABOUT</Menu>
         <Menu to={'https://github.com/' + data.site.siteMetadata.github}>
@@ -62,6 +50,25 @@ const Home = ({ data }: Props) => {
 }
 
 export default Home
+
+export const Head = ({ data }: Props) => {
+  if (!data.site?.siteMetadata?.title || !data.site?.siteMetadata?.siteUrl) {
+    return <div>SEO Error</div>
+  }
+
+  const schema: WithContext<WebSite> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: data.site.siteMetadata.title,
+    alternateName: data.site.siteMetadata.alternateTitle as
+      | string
+      | string[]
+      | undefined,
+    url: data.site.siteMetadata.siteUrl,
+  }
+
+  return <SEO title={data.site.siteMetadata.title} lang="en" schema={schema} />
+}
 
 export const pageQuery = graphql`
   query home {

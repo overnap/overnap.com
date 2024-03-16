@@ -123,11 +123,6 @@ const PostTemplate = ({ data }: Props) => {
 
   return (
     <>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt || undefined}
-        // TODO: add blogpost schema
-      />
       <Layout>
         <Article itemScope itemType="http://schema.org/Article">
           <header>
@@ -164,6 +159,18 @@ const PostTemplate = ({ data }: Props) => {
 }
 
 export default PostTemplate
+
+export const Head = ({ data }: Props) => {
+  const post = data.markdownRemark!
+
+  return (
+    <SEO
+      title={post.frontmatter.title}
+      description={post.frontmatter.description || post.excerpt || undefined}
+      // TODO: add blogpost schema
+    />
+  )
+}
 
 export const pageQuery = graphql`
   query postTemplate($id: String!) {
