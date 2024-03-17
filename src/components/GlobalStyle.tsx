@@ -1,4 +1,5 @@
 import { css, Global } from '@emotion/react'
+import '../../static/font.css'
 
 const reset = css`
   html {

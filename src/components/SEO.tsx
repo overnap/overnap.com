@@ -51,7 +51,6 @@ const SEO = ({ description, lang = 'ko', title, schema }: Props) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-      <link rel="stylesheet" href="/font.css" type="text/css" />
     </>
   )
 }
