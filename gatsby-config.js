@@ -10,7 +10,7 @@ module.exports = {
     alternateTitle: ['SHK', 'overnap'],
     author: 'Seunghwan Kim',
     github: 'overnap',
-    email: 'overnapworks@gmail.com',
+    email: 'me@overnap.com',
     description: "Seunghwan Kim's personal website",
     siteUrl: 'https://overnap.com',
     repository: 'overnap/overnap.com', // for utterances
